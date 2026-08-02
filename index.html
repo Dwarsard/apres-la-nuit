@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Après la Nuit — L’entraide des jeunes endeuillés d’un parent</title>
+<meta name="description" content="Après la Nuit est une association d’entraide entre pairs qui accompagne les enfants, adolescents et jeunes adultes confrontés à la perte soudaine d’un parent. Parce que personne ne devrait avancer seul dans le noir.">
+<meta property="og:title" content="Après la Nuit — L’entraide de celles et ceux qui ont perdu un parent trop tôt, trop vite.">
+<meta property="og:description" content="Association d’entraide entre pairs pour les jeunes confrontés à la perte soudaine d’un parent. Briser l’isolement, libérer la parole, se reconstruire — sans jamais oublier.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Après la Nuit">
+<meta name="theme-color" content="#0c1531">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%23142850'/%3E%3Cpath%20d='M32%2011l2.6%206.4%206.4%202.6-6.4%202.6-2.6%206.4-2.6-6.4-6.4-2.6%206.4-2.6z'%20fill='%23f6d189'/%3E%3Cpath%20d='M9%2054a23%2023%200%200%201%2046%200z'%20fill='%23f2a65a'/%3E%3C/svg%3E">
+<script>document.documentElement.className += ' js';</script>
+<style>
+  /* ==========================================================
+     APRÈS LA NUIT — « De la nuit à l’aube »
+     La page raconte le passage de la nuit au jour :
+     chaque section prolonge le dégradé de la précédente.
+     ========================================================== */
+
+  :root{
+    /* Nuit */
+    --nuit-1:#0c1531;
+    --nuit-2:#16284e;
+    --nuit-3:#263a5e;
+    /* Bleu-gris de fin de nuit */
+    --brume-1:#3c4c6e;
+    --brume-2:#5a5a80;
+    /* Aube */
+    --aube-1:#8d6a83;
+    --aube-2:#e8b48f;
+    --aube-3:#f7e3cd;
+    /* Jour */
+    --jour-1:#fdf6ea;
+    --jour-2:#fffdf8;
+    /* Lumières */
+    --etoile:#f6d189;
+    --etoile-claire:#fadfa6;
+    --soleil:#e8853f;
+    /* Textes */
+    --texte-clair:#f2f0fa;
+    --texte-clair-2:#c3cbe2;
+    --texte-sombre:#33284a;
+    --texte-sombre-2:#4d4260;
+    --lien-sombre:#7c3f14;
+
+    --serif:Georgia, "Times New Roman", Times, serif;
+    --sans:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+    --mesure:42rem;
+    --large:70rem;
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *,*::before,*::after{ animation:none !important; transition:none !important; }
+  }
+
+  body{
+    margin:0;
+    font-family:var(--sans);
+    font-size:1.0625rem;
+    line-height:1.7;
+    color:var(--texte-clair);
+    background:var(--nuit-1);
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3{
+    font-family:var(--serif);
+    font-weight:400;
+    line-height:1.25;
+    margin:0 0 1rem;
+    letter-spacing:.01em;
+  }
+  p{ margin:0 0 1.1em; }
+  p:last-child{ margin-bottom:0; }
+
+  a{ color:inherit; }
+  :focus-visible{
+    outline:3px solid var(--etoile);
+    outline-offset:3px;
+    border-radius:2px;
+  }
+  .clair :focus-visible{ outline-color:#6a3fa0; }
+
+  /* ---------- Masquage accessible ---------- */
+  .visually-hidden{
+    position:absolute;
+    width:1px;height:1px;
+    overflow:hidden;
+    clip:rect(0 0 0 0);
+    clip-path:inset(50%);
+    white-space:nowrap;
+  }
+
+  /* ---------- Lien d’évitement ---------- */
+  .skip-link{
+    position:absolute;
+    left:-9999px;
+    top:0;
+    z-index:100;
+    background:var(--etoile);
+    color:#1c1230;
+    padding:.75rem 1.25rem;
+    border-radius:0 0 .5rem 0;
+    font-weight:600;
+    text-decoration:none;
+  }
+  .skip-link:focus{ left:0; }
+
+  /* ---------- Gabarit ---------- */
+  .contenu{
+    width:min(100% - 2.5rem, var(--mesure));
+    margin-inline:auto;
+  }
+  .contenu-large{
+    width:min(100% - 2.5rem, var(--large));
+    margin-inline:auto;
+  }
+  section{ padding:clamp(3.5rem, 9vw, 6.5rem) 0; scroll-margin-top:clamp(1.5rem, 5vw, 2.5rem); }
+
+  .surtitre{
+    font-family:var(--sans);
+    font-size:.8125rem;
+    font-weight:600;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--etoile-claire);
+    display:block;
+    margin-bottom:1rem;
+  }
+  .clair .surtitre{ color:var(--lien-sombre); }
+
+  h2{ font-size:clamp(1.75rem, 4.5vw, 2.5rem); }
+  h3{ font-size:1.25rem; }
+
+  /* ==========================================================
+     EN-TÊTE + HÉROS : la nuit (enveloppante, jamais oppressante)
+     ========================================================== */
+  .heros{
+    position:relative;
+    background:linear-gradient(180deg, var(--nuit-1) 0%, #101c3e 55%, var(--nuit-2) 100%);
+    padding:0 0 clamp(4rem, 10vw, 7rem);
+    overflow:hidden;
+  }
+
+  .ciel{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+  }
+  .ciel svg{ width:100%; height:100%; display:block; }
+  .etoile-a{ animation:scintille 5.5s ease-in-out infinite; }
+  .etoile-b{ animation:scintille 7s ease-in-out 1.8s infinite; }
+  .etoile-c{ animation:scintille 8.5s ease-in-out 3.2s infinite; }
+  @keyframes scintille{
+    0%,100%{ opacity:.85; }
+    50%{ opacity:.3; }
+  }
+
+  .barre{
+    position:relative;
+    z-index:2;
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:space-between;
+    gap:.75rem 1.5rem;
+    padding-top:1.5rem;
+  }
+  .marque{
+    font-family:var(--serif);
+    font-size:1.25rem;
+    text-decoration:none;
+    color:var(--texte-clair);
+    display:inline-flex;
+    align-items:center;
+    gap:.55rem;
+  }
+  .marque svg{ flex:none; }
+  nav[aria-label]{ font-size:.9375rem; }
+  .nav-liens{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:flex;
+    flex-wrap:wrap;
+    gap:.25rem .5rem;
+  }
+  .nav-liens a{
+    text-decoration:none;
+    color:var(--texte-clair-2);
+    padding:.6rem .65rem;
+    border-radius:.4rem;
+    display:inline-block;
+  }
+
+  /* Outils de barre : « Besoin de parler ? » toujours visible + bouton Menu (mobile) */
+  .barre-outils{
+    display:flex;
+    align-items:center;
+    gap:.5rem;
+  }
+  .nav-appel{
+    text-decoration:none;
+    font-size:.9rem;
+    font-weight:600;
+    color:var(--etoile-claire);
+    background:rgba(246,209,137,.12);
+    border:1px solid rgba(246,209,137,.45);
+    border-radius:2rem;
+    padding:.55rem .95rem;
+    white-space:nowrap;
+  }
+  .nav-toggle{
+    display:none;
+    font:inherit;
+    font-size:.9375rem;
+    color:var(--texte-clair);
+    background:transparent;
+    border:1px solid rgba(255,255,255,.35);
+    border-radius:2rem;
+    padding:.55rem 1rem;
+    cursor:pointer;
+  }
+
+  /* Mobile : sans JS, la nav empilée actuelle reste telle quelle (cibles élargies) ;
+     avec JS, elle se replie derrière un bouton « Menu » sobre. */
+  @media (max-width:719px){
+    .nav-liens{ gap:.4rem .75rem; }
+    .js .nav-toggle{ display:inline-block; }
+    .js .nav-principale{ display:none; order:3; width:100%; }
+    .js .nav-principale.ouvert{ display:block; }
+    .js .nav-principale .nav-liens{
+      flex-direction:column;
+      gap:.1rem;
+      padding:.25rem 0 .5rem;
+    }
+    .js .nav-principale .nav-liens a{ display:block; padding:.7rem .65rem; }
+  }
+
+  .heros-corps{
+    position:relative;
+    z-index:2;
+    text-align:center;
+    padding-top:clamp(4rem, 11vw, 8rem);
+  }
+  .heros-corps h1{
+    font-size:clamp(2.5rem, 8vw, 4.5rem);
+    margin-bottom:1.25rem;
+    color:#fff;
+  }
+  .heros-corps h1 .fine{ color:var(--etoile); }
+  .tagline{
+    font-size:clamp(1.0625rem, 2.4vw, 1.3125rem);
+    color:var(--texte-clair-2);
+    max-width:34em;
+    margin:0 auto .9rem;
+    font-style:italic;
+    font-family:var(--serif);
+  }
+  .precision{
+    font-size:.9rem;
+    color:var(--texte-clair-2);
+    max-width:34em;
+    margin:0 auto 2.5rem;
+  }
+  .heros-actions{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:.875rem;
+  }
+  .appel-hero{
+    margin-top:1.5rem;
+    font-size:.9rem;
+    color:var(--texte-clair-2);
+  }
+  .appel-hero a{
+    color:var(--etoile);
+    font-weight:600;
+    text-decoration-thickness:1px;
+    white-space:nowrap;
+  }
+  .bouton{
+    display:inline-block;
+    text-decoration:none;
+    font-weight:600;
+    font-size:1rem;
+    padding:.8rem 1.6rem;
+    border-radius:2rem;
+    transition:transform .2s ease, background-color .2s ease;
+  }
+  .bouton-plein{
+    background:var(--etoile);
+    color:#241536;
+  }
+  .bouton-contour{
+    color:var(--texte-clair);
+    border:1px solid rgba(255,255,255,.4);
+  }
+
+  /* Effets de survol réservés aux pointeurs qui survolent vraiment
+     (évite le « sticky hover » au doigt). */
+  @media (hover:hover){
+    .nav-liens a:hover{ color:#fff; background:rgba(255,255,255,.08); }
+    .nav-appel:hover{ background:rgba(246,209,137,.2); }
+    .nav-toggle:hover{ background:rgba(255,255,255,.08); }
+    .bouton:hover{ transform:translateY(-2px); }
+    .bouton-plein:hover{ background:var(--etoile-claire); }
+    .bouton-contour:hover{ background:rgba(255,255,255,.08); }
+    .bouton-jour:hover{ background:#463767; }
+    .lien-carte:hover, .cta-contact .mail a:hover{ text-decoration-thickness:2px; }
+    .copier:hover{ background:rgba(232,133,63,.08); }
+  }
+
+  /* Retour tactile au toucher (aucun effet ludique, juste une confirmation) */
+  .bouton:active{ transform:translateY(1px); }
+  .bouton-plein:active{ background:#eec377; }
+  .bouton-contour:active{ background:rgba(255,255,255,.12); }
+  .bouton-jour:active{ background:#2a2140; }
+  .nav-liens a:active, .nav-appel:active, .nav-toggle:active{ background:rgba(255,255,255,.12); }
+  .copier:active{ background:rgba(232,133,63,.14); }
+
+  /* ==========================================================
+     MANIFESTE : encore la nuit, mais une parole s’élève
+     ========================================================== */
+  .manifeste{
+    background:linear-gradient(180deg, var(--nuit-2), var(--nuit-3));
+    text-align:center;
+  }
+  .manifeste-texte{
+    margin:0;
+    font-family:var(--serif);
+    font-size:clamp(1.25rem, 3.2vw, 1.75rem);
+    line-height:1.6;
+    color:#f6f4fc;
+  }
+  .manifeste-texte p{ margin-bottom:1.15em; }
+  .manifeste-texte .cle{
+    color:var(--etoile);
+  }
+  .filet-etoile{
+    display:block;
+    margin:0 auto 2.25rem;
+    width:2rem;
+    height:2rem;
+  }
+
+  /* ==========================================================
+     QUI NOUS SOMMES + MISSION : la nuit s’adoucit
+     ========================================================== */
+  .qui{
+    background:linear-gradient(180deg, var(--nuit-3), var(--brume-1));
+  }
+  .deux-colonnes{
+    display:grid;
+    gap:2.5rem 4rem;
+  }
+  @media (min-width:820px){
+    .deux-colonnes{ grid-template-columns:1fr 1fr; }
+  }
+  .qui p{ color:#e4e7f3; }
+
+  /* ==========================================================
+     POURQUOI : le chiffre qui veille dans la pénombre
+     ========================================================== */
+  .pourquoi{
+    background:linear-gradient(180deg, var(--brume-1), var(--brume-2));
+    text-align:center;
+  }
+  .chiffre-cle{ margin:0 0 2rem; }
+  .chiffre-cle .grand{
+    font-family:var(--serif);
+    font-size:clamp(1.6rem, 4.5vw, 2.6rem);
+    line-height:1.35;
+    color:#fff;
+    max-width:24em;
+    margin:0 auto .75rem;
+  }
+  .chiffre-cle .grand strong{
+    color:var(--etoile);
+    font-weight:400;
+  }
+  .chiffre-cle figcaption{
+    font-size:.85rem;
+    letter-spacing:.04em;
+    color:#e9e6f2;
+  }
+  .pourquoi .detail{
+    max-width:var(--mesure);
+    margin-inline:auto;
+    color:#e9e6f2;
+    text-align:left;
+  }
+  @media (min-width:640px){
+    .pourquoi .detail{ text-align:center; }
+  }
+  /* Ligne-passerelle : la main reste tendue au milieu de la nuit */
+  .passerelle{
+    margin-top:2.5rem;
+    font-size:.9rem;
+    color:#e9e6f2;
+    text-align:center;
+  }
+  .passerelle a{
+    color:var(--etoile-claire);
+    font-weight:600;
+    text-decoration-thickness:1px;
+  }
+  .passerelle a[href^="tel"]{ white-space:nowrap; }
+
+  /* ==========================================================
+     CE QUE NOUS FAISONS : l’aube point à l’horizon
+     ========================================================== */
+  .actions{
+    background:linear-gradient(180deg, var(--brume-2), var(--aube-1));
+  }
+  .grille-actions{
+    display:grid;
+    gap:1.25rem;
+    margin-top:2.5rem;
+  }
+  @media (min-width:640px){
+    .grille-actions{ grid-template-columns:1fr 1fr; }
+  }
+  .carte-action{
+    background:rgba(18,23,55,.42);
+    border:1px solid rgba(246,209,137,.26);
+    border-radius:1rem;
+    padding:1.75rem 1.5rem;
+  }
+  .carte-action .num{
+    font-family:var(--serif);
+    font-size:.9375rem;
+    letter-spacing:.18em;
+    color:var(--etoile);
+    display:block;
+    margin-bottom:.75rem;
+  }
+  .carte-action h3{ color:#fff; margin-bottom:.5rem; }
+  .carte-action p{ color:#f0e9ef; font-size:1rem; }
+
+  /* ---------- Encadré : le premier rayon ---------- */
+  .rayon{
+    background:linear-gradient(180deg, var(--aube-1), var(--aube-2));
+    padding:clamp(3rem, 7vw, 5rem) 0;
+  }
+  .encadre{
+    background:var(--jour-2);
+    color:var(--texte-sombre);
+    border-radius:1.25rem;
+    padding:clamp(1.75rem, 4vw, 2.75rem);
+    box-shadow:0 18px 50px rgba(30,20,60,.28);
+    border-top:5px solid var(--soleil);
+    text-align:center;
+  }
+  .encadre p{
+    font-family:var(--serif);
+    font-size:clamp(1.125rem, 2.6vw, 1.375rem);
+    line-height:1.6;
+    margin:0;
+  }
+  .encadre .soleil-ico{ margin-bottom:1rem; }
+
+  /* ==========================================================
+     VALEURS : la lumière chaude du matin
+     ========================================================== */
+  .valeurs{
+    background:linear-gradient(180deg, var(--aube-2), var(--aube-3));
+    color:var(--texte-sombre);
+  }
+  .valeurs h2{ color:var(--texte-sombre); }
+  .grille-valeurs{
+    display:grid;
+    gap:1.25rem;
+    margin-top:2.5rem;
+  }
+  @media (min-width:560px){ .grille-valeurs{ grid-template-columns:1fr 1fr; } }
+  @media (min-width:1000px){ .grille-valeurs{ grid-template-columns:repeat(4,1fr); } }
+  .valeur{
+    background:rgba(255,253,248,.62);
+    border:1px solid rgba(124,63,20,.14);
+    border-radius:1rem;
+    padding:1.5rem 1.25rem;
+  }
+  .valeur h3{
+    color:#5e2f10;
+    font-size:1.125rem;
+    margin-bottom:.4rem;
+  }
+  .valeur p{
+    font-size:.975rem;
+    color:var(--texte-sombre-2);
+  }
+
+  /* ==========================================================
+     NOUS REJOINDRE : le plein jour
+     ========================================================== */
+  .rejoindre{
+    background:linear-gradient(180deg, var(--aube-3), var(--jour-1));
+    color:var(--texte-sombre);
+  }
+  .rejoindre h2{ color:var(--texte-sombre); }
+  .grille-publics{
+    display:grid;
+    gap:1.25rem;
+    margin:2.25rem 0 2.75rem;
+  }
+  @media (min-width:640px){ .grille-publics{ grid-template-columns:1fr 1fr; } }
+  @media (min-width:1100px){ .grille-publics{ grid-template-columns:repeat(4,1fr); } }
+  .public{
+    background:#fffdf8;
+    border:1px solid rgba(124,63,20,.14);
+    border-radius:1rem;
+    padding:1.5rem 1.25rem;
+    box-shadow:0 6px 18px rgba(90,60,30,.06);
+  }
+  .public-vous{ border-top:4px solid var(--soleil); scroll-margin-top:clamp(1.5rem, 5vw, 2.5rem); }
+  .public h3{ font-size:1.0625rem; color:#5e2f10; margin-bottom:.4rem; }
+  .public p{ font-size:.975rem; color:var(--texte-sombre-2); }
+  .lien-carte{
+    display:inline-block;
+    margin-top:.75rem;
+    padding:.5rem 0;
+    font-size:.9375rem;
+    font-weight:600;
+    color:var(--lien-sombre);
+    text-decoration:underline;
+    text-decoration-thickness:1px;
+    text-underline-offset:2px;
+    overflow-wrap:anywhere;
+  }
+
+  .cta-contact{ text-align:center; scroll-margin-top:clamp(1.5rem, 5vw, 2.5rem); }
+  .bouton-jour{
+    background:#33284a;
+    color:#fdf6ea;
+    font-size:1.0625rem;
+  }
+  .cta-contact .mail{
+    display:block;
+    margin-top:.9rem;
+    font-size:.95rem;
+    color:var(--texte-sombre-2);
+    overflow-wrap:anywhere;
+  }
+  .cta-contact .mail a{ color:var(--lien-sombre); }
+  .copier{
+    display:inline-block;
+    margin-top:.75rem;
+    font:inherit;
+    font-size:.875rem;
+    padding:.45rem .9rem;
+    border-radius:2rem;
+    border:1px solid rgba(124,63,20,.25);
+    background:transparent;
+    color:var(--lien-sombre);
+    cursor:pointer;
+  }
+  .rassurance{
+    max-width:34em;
+    margin:1.25rem auto 0;
+    font-size:.95rem;
+    color:var(--texte-sombre-2);
+  }
+
+  /* ---------- Besoin de parler maintenant ? ---------- */
+  .ecoute{
+    margin-top:3.25rem;
+    background:rgba(255,253,248,.75);
+    border:1px solid rgba(124,63,20,.16);
+    border-left:4px solid var(--soleil);
+    border-radius:.9rem;
+    padding:1.4rem 1.5rem;
+    scroll-margin-top:clamp(1.5rem, 5vw, 2.5rem);
+  }
+  .ecoute h3{
+    font-family:var(--sans);
+    font-size:1rem;
+    font-weight:700;
+    color:var(--texte-sombre);
+    margin-bottom:.5rem;
+  }
+  .ecoute p{
+    font-size:.95rem;
+    color:var(--texte-sombre-2);
+    margin-bottom:.65em;
+  }
+  .ecoute a{
+    color:var(--lien-sombre);
+    font-weight:600;
+    text-decoration-thickness:1px;
+    white-space:nowrap;
+  }
+  /* Numéros en « puces » tactiles sobres (≥ 44 px de haut) */
+  .ecoute a[href^="tel"], footer a[href^="tel"]{
+    display:inline-flex;
+    align-items:center;
+    min-height:44px;
+    padding:.5rem .85rem;
+    margin:.15rem .1rem;
+    background:rgba(232,133,63,.10);
+    border:1px solid rgba(124,63,20,.18);
+    border-radius:.65rem;
+    text-decoration:none;
+    line-height:1.3;
+  }
+
+  /* ==========================================================
+     PIED DE PAGE : lumineux — le jour est là
+     ========================================================== */
+  footer{
+    background:linear-gradient(180deg, var(--jour-1), var(--jour-2));
+    color:var(--texte-sombre-2);
+    text-align:center;
+    padding:clamp(3rem, 7vw, 4.5rem) 0 2.5rem;
+    font-size:.95rem;
+  }
+  footer .soleil-final{ margin-bottom:1.25rem; }
+  footer p{ margin:0 0 .5em; }
+  footer a{ color:var(--lien-sombre); }
+  footer a[href^="tel"]{ font-weight:600; white-space:nowrap; }
+  footer .devise{
+    font-family:var(--serif);
+    font-style:italic;
+    color:#8a5a2e;
+    margin-top:1.25rem;
+  }
+  footer .retour{ margin-top:1.5rem; }
+  footer .retour a{
+    display:inline-block;
+    padding:.65rem .75rem;
+    font-size:.9rem;
+  }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#contenu">Aller au contenu principal</a>
+
+<!-- ======================= LA NUIT ======================= -->
+<header class="heros" id="haut">
+  <!-- Ciel étoilé, discret (décoratif) -->
+  <div class="ciel" aria-hidden="true">
+    <svg viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" fill="#f6d189" role="presentation">
+      <circle class="etoile-a" cx="90"  cy="120" r="1.6" opacity=".8"/>
+      <circle class="etoile-b" cx="220" cy="60"  r="1.1" opacity=".55"/>
+      <circle class="etoile-c" cx="340" cy="180" r="1.4" opacity=".7"/>
+      <circle class="etoile-a" cx="470" cy="90"  r="1"   opacity=".5"/>
+      <circle class="etoile-b" cx="600" cy="150" r="1.7" opacity=".75"/>
+      <circle class="etoile-c" cx="735" cy="70"  r="1.2" opacity=".6"/>
+      <circle class="etoile-a" cx="860" cy="190" r="1.5" opacity=".7"/>
+      <circle class="etoile-b" cx="980" cy="100" r="1.1" opacity=".55"/>
+      <circle class="etoile-c" cx="1110" cy="160" r="1.6" opacity=".8"/>
+      <circle class="etoile-a" cx="150" cy="300" r="1.2" opacity=".5"/>
+      <circle class="etoile-b" cx="420" cy="320" r="1"   opacity=".45"/>
+      <circle class="etoile-c" cx="680" cy="290" r="1.3" opacity=".55"/>
+      <circle class="etoile-a" cx="920" cy="330" r="1"   opacity=".45"/>
+      <circle class="etoile-b" cx="1150" cy="290" r="1.2" opacity=".5"/>
+      <circle class="etoile-c" cx="60"  cy="450" r="1"   opacity=".35"/>
+      <circle class="etoile-a" cx="540" cy="470" r="1.1" opacity=".35"/>
+      <circle class="etoile-b" cx="1040" cy="460" r="1"  opacity=".35"/>
+      <!-- Fin croissant de lune, très doux -->
+      <path d="M1060 88a44 44 0 1 0 30 76 36 36 0 1 1-30-76z" fill="#e9dcae" opacity=".28"/>
+    </svg>
+  </div>
+
+  <div class="contenu-large barre">
+    <a class="marque" href="#haut">
+      <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 3l1.6 4.4L18 9l-4.4 1.6L12 15l-1.6-4.4L6 9l4.4-1.6z" fill="#f6d189"/>
+      </svg>
+      Après la Nuit
+    </a>
+    <nav class="nav-principale" id="menu-principal" aria-label="Navigation principale">
+      <ul class="nav-liens" role="list">
+        <li><a href="#qui-nous-sommes">Qui nous sommes</a></li>
+        <li><a href="#actions">Nos actions</a></li>
+        <li><a href="#valeurs">Nos valeurs</a></li>
+        <li><a href="#rejoindre">Nous rejoindre</a></li>
+      </ul>
+    </nav>
+    <div class="barre-outils">
+      <a class="nav-appel" href="#ecoute">Besoin de parler&#8239;?</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu-principal">Menu</button>
+    </div>
+  </div>
+
+  <div class="contenu heros-corps">
+    <h1>Après <span class="fine">la Nuit</span></h1>
+    <p class="tagline">L’entraide de celles et ceux qui ont perdu un parent trop tôt, trop vite.</p>
+    <p class="precision">Association d’entraide entre pairs&nbsp;— pour les enfants, adolescents et jeunes adultes.</p>
+    <div class="heros-actions">
+      <a class="bouton bouton-plein" href="#contact">Écrivez-nous</a>
+      <a class="bouton bouton-contour" href="#manifeste">Découvrir l’association</a>
+    </div>
+    <p class="appel-hero">Besoin de parler maintenant&#8239;? Le <a href="tel:3114">3114</a> vous écoute, gratuit, 24&#8239;h/24.</p>
+  </div>
+</header>
+
+<main id="contenu" tabindex="-1">
+
+  <!-- ======================= MANIFESTE ======================= -->
+  <section class="manifeste" id="manifeste" aria-labelledby="titre-manifeste">
+    <div class="contenu">
+      <h2 id="titre-manifeste" class="visually-hidden">Notre manifeste</h2>
+      <svg class="filet-etoile" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 2l2 6 6 2-6 2-2 6-2-6-6-2 6-2z" fill="#f6d189" opacity=".9"/>
+      </svg>
+      <div class="manifeste-texte">
+        <p>Il y a un avant et un après.</p>
+        <p>La nuit tombe d’un coup, sans prévenir.</p>
+        <p>Après la Nuit rassemble ceux qui ont traversé cette nuit-là pour tendre la main à ceux qui y entrent.</p>
+        <p class="cle">Parce que personne ne devrait avancer seul dans le noir.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= QUI NOUS SOMMES ======================= -->
+  <section class="qui" id="qui-nous-sommes" aria-labelledby="titre-qui">
+    <div class="contenu-large deux-colonnes">
+      <div>
+        <span class="surtitre">Qui nous sommes</span>
+        <h2 id="titre-qui">Une main tendue, de pair à pair</h2>
+        <p>Après la Nuit est une association d’entraide entre pairs. Elle rassemble celles et ceux qui ont perdu un parent de manière soudaine&nbsp;— un accident, un arrêt cardiaque, un suicide, un drame qu’on n’a pas vu venir&nbsp;— pour accompagner ceux qui le vivent aujourd’hui, quelle qu’en soit la cause.</p>
+        <p>Notre conviction&nbsp;: personne, et surtout pas un enfant ou un adolescent, ne devrait traverser une telle épreuve sans quelqu’un à ses côtés.</p>
+      </div>
+      <div>
+        <span class="surtitre">Notre mission</span>
+        <h2>Briser l’isolement, libérer la parole</h2>
+        <p>Accompagner les enfants, adolescents et jeunes adultes confrontés à la perte soudaine d’un parent.</p>
+        <p>Par l’entraide entre pairs, briser l’isolement, libérer la parole, montrer qu’on peut se reconstruire&nbsp;— sans jamais oublier.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= POURQUOI ======================= -->
+  <section class="pourquoi" id="pourquoi" aria-labelledby="titre-pourquoi">
+    <div class="contenu">
+      <span class="surtitre" aria-hidden="true">Pourquoi nous existons</span>
+      <h2 id="titre-pourquoi" class="visually-hidden">Pourquoi nous existons</h2>
+      <figure class="chiffre-cle">
+        <p class="grand">En France, <strong>un enfant par classe</strong> est orphelin, en moyenne.</p>
+        <figcaption>Enquête «&#8239;École et orphelins&#8239;», Ifop pour l’OCIRP, 2017.</figcaption>
+      </figure>
+      <div class="detail">
+        <p>Beaucoup de ces jeunes se sentent différents et n’osent pas en parler, et l’accompagnement adapté reste rare&nbsp;— plus rare encore quand la perte est brutale.</p>
+        <p>Le deuil soudain a ses spécificités&nbsp;: la sidération, l’absence d’adieu, parfois la médiatisation ou des procédures qui s’ajoutent au chagrin.</p>
+      </div>
+      <p class="passerelle">Besoin de parler ce soir&#8239;? Le <a href="tel:3114">3114</a> écoute, gratuit, 24&#8239;h/24&nbsp;— ou <a href="#vous-traversez">écrivez-nous</a>.</p>
+    </div>
+  </section>
+
+  <!-- ======================= CE QUE NOUS FAISONS ======================= -->
+  <section class="actions" id="actions" aria-labelledby="titre-actions">
+    <div class="contenu-large">
+      <span class="surtitre">Nos actions</span>
+      <h2 id="titre-actions">Quatre façons d’avancer ensemble</h2>
+      <div class="grille-actions">
+        <article class="carte-action">
+          <span class="num" aria-hidden="true">01</span>
+          <h3>L’entraide entre pairs</h3>
+          <p>Temps de rencontre, groupes de parole, parrainage entre personnes ayant vécu la perte soudaine d’un parent. Se sentir compris par quelqu’un qui sait, vraiment.</p>
+        </article>
+        <article class="carte-action">
+          <span class="num" aria-hidden="true">02</span>
+          <h3>Les témoignages</h3>
+          <p>Recueillir et partager des récits, avec soin et consentement, pour que d’autres se sentent moins seuls.</p>
+        </article>
+        <article class="carte-action">
+          <span class="num" aria-hidden="true">03</span>
+          <h3>La sensibilisation</h3>
+          <p>Faire connaître la réalité du deuil des jeunes, auprès du public et des institutions.</p>
+        </article>
+        <article class="carte-action">
+          <span class="num" aria-hidden="true">04</span>
+          <h3>L’orientation</h3>
+          <p>Aider à trouver le bon interlocuteur, notamment des professionnels formés au deuil.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= ENCADRÉ — PREMIER RAYON ======================= -->
+  <div class="rayon">
+    <div class="contenu">
+      <aside class="encadre" aria-label="Précision importante sur notre cadre d’action">
+        <svg class="soleil-ico" width="34" height="34" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="4.5" fill="#e8853f"/>
+          <g stroke="#e8853f" stroke-width="1.6" stroke-linecap="round">
+            <line x1="12" y1="1.5" x2="12" y2="4.5"/>
+            <line x1="12" y1="19.5" x2="12" y2="22.5"/>
+            <line x1="1.5" y1="12" x2="4.5" y2="12"/>
+            <line x1="19.5" y1="12" x2="22.5" y2="12"/>
+            <line x1="4.6" y1="4.6" x2="6.7" y2="6.7"/>
+            <line x1="17.3" y1="17.3" x2="19.4" y2="19.4"/>
+            <line x1="4.6" y1="19.4" x2="6.7" y2="17.3"/>
+            <line x1="17.3" y1="6.7" x2="19.4" y2="4.6"/>
+          </g>
+        </svg>
+        <p>L’entraide entre pairs accompagne. Elle ne remplace jamais un soin quand il en faut un. C’est pourquoi notre action est encadrée par un référent professionnel.</p>
+      </aside>
+    </div>
+  </div>
+
+  <!-- ======================= VALEURS ======================= -->
+  <section class="valeurs clair" id="valeurs" aria-labelledby="titre-valeurs">
+    <div class="contenu-large">
+      <span class="surtitre">Nos valeurs</span>
+      <h2 id="titre-valeurs">Ce qui nous guide, du soir au matin</h2>
+      <div class="grille-valeurs">
+        <article class="valeur">
+          <h3>Écoute</h3>
+          <p>Chacun est reçu sans jugement, à son rythme.</p>
+        </article>
+        <article class="valeur">
+          <h3>Respect</h3>
+          <p>Chaque perte est entière&#8239;; on ne compare pas les deuils.</p>
+        </article>
+        <article class="valeur">
+          <h3>Confidentialité</h3>
+          <p>Ce qui se dit reste protégé, dans le respect du cadre légal qui protège chacun.</p>
+        </article>
+        <article class="valeur">
+          <h3>Espoir</h3>
+          <p>Nous parlons de la nuit, mais nous regardons vers le jour.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= NOUS REJOINDRE ======================= -->
+  <section class="rejoindre clair" id="rejoindre" aria-labelledby="titre-rejoindre">
+    <div class="contenu-large">
+      <span class="surtitre">Nous rejoindre, nous soutenir</span>
+      <h2 id="titre-rejoindre">À chacun sa porte d’entrée</h2>
+      <div class="grille-publics">
+        <article class="public public-vous" id="vous-traversez">
+          <h3>Vous traversez cette nuit</h3>
+          <p>Vous avez perdu votre père ou votre mère, récemment ou non. Vous pouvez nous écrire, simplement pour parler. Rien d’autre n’est attendu de vous.</p>
+          <a class="lien-carte" href="mailto:contact.apreslanuit@gmail.com?subject=J%27ai%20besoin%20de%20parler">Nous écrire&nbsp;→</a>
+        </article>
+        <article class="public">
+          <h3>Vous l’avez vécu</h3>
+          <p>Vous avez traversé la perte soudaine d’un parent et souhaitez, à votre tour, être là pour un plus jeune.</p>
+          <a class="lien-carte" href="mailto:contact.apreslanuit@gmail.com?subject=Je%20l%27ai%20v%C3%A9cu%20et%20je%20veux%20aider">Nous écrire&nbsp;→</a>
+        </article>
+        <article class="public">
+          <h3>Vous connaissez un jeune</h3>
+          <p>Un enfant, un adolescent ou un jeune adulte de votre entourage vit cette épreuve&#8239;? Parlons-en ensemble. Enseignants, éducateurs, soignants&nbsp;: vous pouvez nous écrire, ou simplement transmettre cette page aux familles concernées&nbsp;— elle est faite pour ça.</p>
+          <a class="lien-carte" href="mailto:contact.apreslanuit@gmail.com?subject=Un%20jeune%20de%20mon%20entourage">Nous écrire&nbsp;→</a>
+        </article>
+        <article class="public">
+          <h3>Vous voulez nous soutenir</h3>
+          <p>Vous souhaitez soutenir notre action et l’aider à grandir, à votre mesure.</p>
+          <a class="lien-carte" href="mailto:contact.apreslanuit@gmail.com?subject=Soutenir%20l%27association">Nous écrire&nbsp;→</a>
+        </article>
+      </div>
+      <div class="cta-contact" id="contact">
+        <a class="bouton bouton-jour" href="mailto:contact.apreslanuit@gmail.com?subject=Prendre%20contact%20avec%20Apr%C3%A8s%20la%20Nuit">Écrivez-nous</a>
+        <span class="mail">Si rien ne s’ouvre, copiez simplement notre adresse&nbsp;: <a href="mailto:contact.apreslanuit@gmail.com">contact.apreslanuit@gmail.com</a></span>
+        <p class="rassurance">Quelques mots suffisent&nbsp;— qui vous êtes, ce que vous traversez ou la personne pour qui vous écrivez. Votre message est lu en toute confidentialité par un membre de l’association, qui vous répondra personnellement.</p>
+      </div>
+
+      <!-- Bloc discret : besoin de parler maintenant ? -->
+      <aside class="ecoute" id="ecoute" aria-label="Numéros d’écoute">
+        <h3>Besoin de parler maintenant&#8239;?</h3>
+        <p>À toute heure, le <a href="tel:3114">3114</a> vous écoute&nbsp;— gratuit, 24&#8239;h/24, même si vous ne savez pas quoi dire.</p>
+        <p>En journée, de 9&#8239;h à 23&#8239;h, Fil Santé Jeunes vous répond au <a href="tel:0800235236">0&nbsp;800&nbsp;235&nbsp;236</a>, anonyme et gratuit.</p>
+      </aside>
+    </div>
+  </section>
+</main>
+
+<!-- ======================= LE JOUR ======================= -->
+<footer class="clair">
+  <div class="contenu">
+    <svg class="soleil-final" width="56" height="32" viewBox="0 0 56 32" aria-hidden="true">
+      <path d="M8 30a20 20 0 0 1 40 0z" fill="#f2a65a"/>
+      <line x1="28" y1="2" x2="28" y2="8" stroke="#e8853f" stroke-width="2" stroke-linecap="round"/>
+      <line x1="12" y1="8" x2="16" y2="12" stroke="#e8853f" stroke-width="2" stroke-linecap="round"/>
+      <line x1="44" y1="8" x2="40" y2="12" stroke="#e8853f" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    <p><strong>Après la Nuit</strong>&nbsp;— association régie par la loi du 1<sup>er</sup> juillet 1901.</p>
+    <p>Contact&nbsp;: <a href="mailto:contact.apreslanuit@gmail.com">contact.apreslanuit@gmail.com</a></p>
+    <p>Besoin de parler&#8239;? À toute heure&nbsp;: <a href="tel:3114">3114</a> (gratuit, 24&#8239;h/24) · en journée, Fil Santé Jeunes&nbsp;: <a href="tel:0800235236">0&nbsp;800&nbsp;235&nbsp;236</a> (9&#8239;h à 23&#8239;h).</p>
+    <p class="devise">Après la nuit vient le jour&nbsp;— à son heure, pour chacun.</p>
+    <p class="retour"><a href="#haut">↑ Revenir au début</a></p>
+  </div>
+</footer>
+
+<script>
+/* Améliorations progressives — sans JavaScript, la page reste 100 % fonctionnelle :
+   nav dépliée telle quelle, mailto + adresse visible, aucun bouton fantôme. */
+(function(){
+  /* Menu replié en mobile */
+  var btn = document.querySelector('.nav-toggle');
+  var nav = document.getElementById('menu-principal');
+  if (btn && nav) {
+    btn.addEventListener('click', function(){
+      var ouvert = nav.classList.toggle('ouvert');
+      btn.setAttribute('aria-expanded', ouvert ? 'true' : 'false');
+    });
+    nav.addEventListener('click', function(e){
+      var lien = e.target && e.target.closest ? e.target.closest('a') : null;
+      if (lien) {
+        nav.classList.remove('ouvert');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    });
+    /* La pastille « Besoin de parler ? » est hors du nav : elle doit aussi refermer le menu */
+    var appel = document.querySelector('.nav-appel');
+    if (appel) {
+      appel.addEventListener('click', function(){
+        nav.classList.remove('ouvert');
+        btn.setAttribute('aria-expanded', 'false');
+      });
+    }
+  }
+
+  /* Bouton « Copier l’adresse » (créé seulement si l’API existe) */
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    var mail = document.querySelector('.cta-contact .mail');
+    if (mail) {
+      var copier = document.createElement('button');
+      copier.type = 'button';
+      copier.className = 'copier';
+      copier.textContent = 'Copier l’adresse';
+      var annonce = document.createElement('span');
+      annonce.className = 'visually-hidden';
+      annonce.setAttribute('aria-live', 'polite');
+      mail.insertAdjacentElement('afterend', copier);
+      copier.insertAdjacentElement('afterend', annonce);
+      copier.addEventListener('click', function(){
+        navigator.clipboard.writeText('contact.apreslanuit@gmail.com').then(function(){
+          copier.textContent = 'Adresse copiée';
+          annonce.textContent = 'Adresse copiée dans le presse-papiers';
+          setTimeout(function(){ copier.textContent = 'Copier l’adresse'; }, 2000);
+        }).catch(function(){});
+      });
+    }
+  }
+})();
+</script>
+
+</body>
+</html>
