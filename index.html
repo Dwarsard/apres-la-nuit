@@ -2,6 +2,8 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-DamCoPgB/VkDCPsu0R6X4sJsz1c66vGlUGBXLu04Yxg=' 'sha256-ieNBcbbpXwd33bBWJQxQfNB0apFKru4JwgVq1Delu28='; style-src 'unsafe-inline'; img-src data:; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Après la Nuit — L’entraide des jeunes endeuillés d’un parent</title>
 <meta name="description" content="Après la Nuit est une association d’entraide entre pairs qui accompagne les enfants, adolescents et jeunes adultes confrontés à la perte soudaine d’un parent. Parce que personne ne devrait avancer seul dans le noir.">
@@ -896,6 +898,9 @@
   </div>
 </footer>
 
+<!-- ATTENTION : la CSP du head autorise les deux blocs script inline par hash SHA-256.
+     Toute modification du CONTENU d'un bloc script (même un espace) impose de recalculer
+     son hash et de mettre à jour la meta CSP, sinon le JS est désactivé en silence. -->
 <script>
 /* Améliorations progressives — sans JavaScript, la page reste 100 % fonctionnelle :
    nav dépliée telle quelle, mailto + adresse visible, aucun bouton fantôme. */
