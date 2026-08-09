@@ -692,6 +692,57 @@
     font-size:.9rem;
   }
 
+  /* ---------- Bloc légal : discret, replié, sans JavaScript ---------- */
+  .legal{
+    width:min(100%, 38rem);
+    margin:2.5rem auto 0;
+    padding-top:1.25rem;
+    border-top:1px solid rgba(124,63,20,.16);
+    text-align:left;
+    font-size:.85rem;
+    line-height:1.65;
+    color:var(--texte-sombre-2);
+  }
+  .legal summary{
+    display:flex;
+    align-items:center;
+    gap:.55rem;
+    min-height:44px;
+    padding:.5rem .35rem;
+    font-weight:600;
+    cursor:pointer;
+    list-style:none;
+    border-radius:.4rem;
+    -webkit-user-select:none;
+    user-select:none;
+  }
+  .legal summary::-webkit-details-marker{ display:none; }
+  /* Chevron discret, dessiné en CSS (aucune ressource externe) */
+  .legal summary::before{
+    content:"";
+    flex:none;
+    width:.4em;
+    height:.4em;
+    border-right:1.5px solid currentColor;
+    border-bottom:1.5px solid currentColor;
+    transform:rotate(-45deg);
+    opacity:.65;
+    transition:transform .18s ease;
+  }
+  .legal details[open] > summary::before{ transform:rotate(45deg); }
+  @media (hover:hover){
+    .legal summary:hover{ background:rgba(232,133,63,.08); }
+  }
+  .legal summary:active{ background:rgba(232,133,63,.14); }
+  .legal .legal-corps{
+    padding:.15rem .35rem 1rem 1.3rem;
+    overflow-wrap:anywhere;
+  }
+  .legal .legal-corps p{ margin:0 0 .75em; }
+  .legal .legal-corps p:last-child{ margin-bottom:0; }
+  .legal strong{ color:var(--texte-sombre); font-weight:600; }
+  .legal a{ color:var(--lien-sombre); }
+
   /* ==========================================================
      FINITIONS TRANSVERSES
      ========================================================== */
@@ -744,6 +795,8 @@
     .carte-action,.valeur,.public,.encadre,.ecoute{ background:#fff; border:1px solid #999; box-shadow:none; break-inside:avoid; }
     .encadre{ border-top:3px solid #1a1a1a; }
     .ecoute a[href^="tel"], footer a[href^="tel"]{ background:none; border:0; padding:0; min-height:0; text-decoration:underline; }
+    .legal{ color:#1a1a1a; border-top-color:#999; }
+    .legal summary, .legal strong{ color:#1a1a1a; }
     h2, h3{ break-after:avoid; }
   }
 </style>
@@ -1020,6 +1073,28 @@
     <p>Besoin de parler&#8239;? <a href="tel:3114">3114</a> (gratuit, 24&#8239;h/24) · Fil Santé Jeunes&nbsp;: <a href="tel:0800235236">0&nbsp;800&nbsp;235&nbsp;236</a> (de 9&#8239;h à 23&#8239;h).</p>
     <p class="devise">Après la nuit vient le jour&nbsp;— à son heure, pour chacun.</p>
     <p class="retour"><a href="#haut"><span aria-hidden="true">↑&nbsp;</span>Revenir au début</a></p>
+
+    <!-- Bloc légal : <details> natifs, repliés par défaut, zéro JavaScript -->
+    <div class="legal">
+      <details>
+        <summary>Mentions légales</summary>
+        <div class="legal-corps">
+          <p><strong>Éditeur</strong>&nbsp;: Après la Nuit, association régie par la loi du 1<sup>er</sup> juillet 1901, en cours de déclaration en préfecture (la publication au Journal officiel des associations&nbsp;— JOAFE&nbsp;— suivra). Siège&nbsp;: Ermenonville (Oise)&nbsp;— l’adresse complète est communiquée sur demande écrite à <a href="mailto:contact.apreslanuit@gmail.com">contact.apreslanuit@gmail.com</a>.</p>
+          <p><strong>Directeur de la publication</strong>&nbsp;: Lucas Marroig, président de l’association.</p>
+          <p><strong>Contact</strong>&nbsp;: <a href="mailto:contact.apreslanuit@gmail.com">contact.apreslanuit@gmail.com</a></p>
+          <p><strong>Hébergeur</strong>&nbsp;: GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis&nbsp;— téléphone&nbsp;: +1&nbsp;877&nbsp;448&nbsp;4820 (service GitHub Pages&nbsp;— pages.github.com).</p>
+        </div>
+      </details>
+      <details>
+        <summary>Vos données</summary>
+        <div class="legal-corps">
+          <p>Ce site ne dépose aucun cookie et nous n’y collectons, nous-mêmes, aucune information pendant votre visite. Seul notre hébergeur (GitHub) enregistre des données techniques, comme l’adresse IP, le temps de faire fonctionner le site.</p>
+          <p>Si vous nous écrivez, nous recevons votre adresse e-mail et ce que vous choisissez de nous dire. Ces messages servent uniquement à vous répondre et à vous accompagner. Ils sont lus par les seuls membres désignés de l’association et sont supprimés dès qu’ils ne sont plus nécessaires. Nous ne les transmettons à personne d’autre, sauf si la loi nous y oblige&nbsp;— par exemple pour alerter les personnes capables de protéger quelqu’un qui serait en danger. C’est le même cadre légal que celui rappelé dans nos valeurs.</p>
+          <p>Ce qui nous y autorise&nbsp;: la mission d’accompagnement de l’association (ce que le RGPD appelle l’«&#8239;intérêt légitime&#8239;»). Si vous avez moins de 15&nbsp;ans, vous pouvez nous écrire par vous-même&nbsp;— les textes le prévoient pour les services d’écoute et de conseil (considérant 38 du RGPD)&nbsp;— et, si vous le souhaitez, en parler à un adulte de confiance.</p>
+          <p><strong>Vos droits</strong>&nbsp;: vous pouvez demander à voir, corriger ou faire supprimer ce qui vous concerne, ou demander qu’on limite son utilisation, en écrivant à <a href="mailto:contact.apreslanuit@gmail.com">contact.apreslanuit@gmail.com</a>. Vous pouvez aussi, à tout moment et sans avoir à vous justifier, vous opposer à ce que nous conservions ou utilisions vos messages&nbsp;: il suffit de nous le dire. Enfin, vous pouvez contacter la CNIL, l’autorité qui veille sur les données personnelles en France (cnil.fr).</p>
+        </div>
+      </details>
+    </div>
   </div>
 </footer>
 
