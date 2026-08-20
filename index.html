@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="canonical" href="https://dwarsard.github.io/apres-la-nuit/">
 <meta name="robots" content="index, follow, max-image-preview:large">
-<title>Après la Nuit — Association d’aide aux jeunes en deuil d’un parent</title>
-<meta name="description" content="Votre père ou votre mère est décédé brutalement&#8239;? L’association Après la Nuit aide les enfants, ados et jeunes adultes en deuil à en parler et à ne plus rester seuls.">
-<meta property="og:title" content="Après la Nuit — L’entraide de celles et ceux qui ont perdu un parent trop tôt, trop vite.">
+<title>Après la Nuit — Aide aux jeunes en deuil d’un parent</title>
+<meta name="description" content="Votre père ou votre mère est décédé brutalement&#8239;? L’association Après la Nuit aide les enfants, ados et jeunes adultes à en parler et à ne plus rester seuls.">
+<meta property="og:title" content="Après la Nuit — L’entraide des jeunes qui ont perdu un parent">
 <meta property="og:description" content="Association d’entraide entre pairs pour les jeunes confrontés à la perte soudaine d’un parent. Briser l’isolement, libérer la parole, se reconstruire — sans jamais oublier.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
@@ -20,12 +20,12 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Ciel étoilé qui s’éclaircit vers l’aube — Après la Nuit, l’entraide des jeunes qui ont perdu un parent">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Après la Nuit — L’entraide de celles et ceux qui ont perdu un parent trop tôt, trop vite.">
+<meta name="twitter:title" content="Après la Nuit — L’entraide des jeunes qui ont perdu un parent">
 <meta name="twitter:description" content="Association d’entraide entre pairs pour les jeunes confrontés à la perte soudaine d’un parent. Briser l’isolement, libérer la parole, se reconstruire — sans jamais oublier.">
 <meta name="twitter:image" content="https://dwarsard.github.io/apres-la-nuit/og-card.png">
 <meta name="twitter:image:alt" content="Ciel étoilé qui s’éclaircit vers l’aube — Après la Nuit, l’entraide des jeunes qui ont perdu un parent">
 <meta name="theme-color" content="#0c1531">
-<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%23142850'/%3E%3Cpath%20d='M32%2011l2.6%206.4%206.4%202.6-6.4%202.6-2.6%206.4-2.6-6.4-6.4-2.6%206.4-2.6z'%20fill='%23f6d189'/%3E%3Cpath%20d='M9%2054a23%2023%200%200%201%2046%200z'%20fill='%23f2a65a'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%23142850'/%3E%3Cpath%20d='M32%207l3%209%209%203-9%203-3%209-3-9-9-3%209-3z'%20fill='%23f6d189'/%3E%3Cpath%20d='M9%2054a23%2023%200%200%201%2046%200z'%20fill='%23f2a65a'/%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <script>document.documentElement.className += ' js';</script>
 <style>
@@ -288,6 +288,14 @@
     .js .nav-principale .nav-liens a{ display:block; padding:.7rem .65rem; }
   }
 
+  /* Tablette / paysage : la pastille rejoint la marque en rangée 1,
+     la nav passe en rangée 2, pleine largeur, centrée. */
+  @media (min-width:720px) and (max-width:999px){
+    .barre-outils{ order:2; }
+    .nav-principale{ order:3; flex-basis:100%; }
+    .nav-principale .nav-liens{ justify-content:center; }
+  }
+
   .heros-corps{
     position:relative;
     z-index:2;
@@ -379,6 +387,8 @@
   .bouton-jour:active{ background:#2a2140; }
   .nav-liens a:active, .nav-appel:active, .nav-toggle:active{ background:rgba(255,255,255,.12); }
   .copier:active{ background:rgba(232,133,63,.14); }
+  .ecoute a[href^="tel"]:active, footer a[href^="tel"]:active{ background:rgba(232,133,63,.22); }
+  .lien-carte:active{ text-decoration-thickness:2px; }
 
   /* ==========================================================
      MANIFESTE : encore la nuit, mais une parole s’élève
@@ -579,7 +589,7 @@
     box-shadow:0 1px 2px rgba(90,60,30,.06), 0 8px 22px rgba(90,60,30,.07);
   }
   .public-vous{ border-top:4px solid var(--soleil); scroll-margin-top:clamp(1.5rem, 5vw, 2.5rem); }
-  .public h3{ font-size:1.0625rem; color:#5e2f10; margin-bottom:.4rem; }
+  .public h3{ font-size:1.125rem; color:#5e2f10; margin-bottom:.4rem; }
   .public p{ font-size:.975rem; color:var(--texte-sombre-2); }
   .lien-carte{
     display:inline-block;
@@ -650,7 +660,8 @@
     color:var(--texte-sombre-2);
   }
 
-  .cta-contact{ text-align:center; scroll-margin-top:clamp(1.5rem, 5vw, 2.5rem); }
+  .cta-contact, .parcours{ scroll-margin-top:clamp(1.5rem, 5vw, 2.5rem); }
+  .cta-contact{ text-align:center; }
   .bouton-jour{
     background:#33284a;
     color:#fdf6ea;
@@ -881,12 +892,12 @@
   .legal summary::before{
     content:"";
     flex:none;
-    width:.4em;
-    height:.4em;
-    border-right:1.5px solid currentColor;
-    border-bottom:1.5px solid currentColor;
+    width:.42em;
+    height:.42em;
+    border-right:1.5px solid var(--lien-sombre);
+    border-bottom:1.5px solid var(--lien-sombre);
     transform:rotate(-45deg);
-    opacity:.65;
+    opacity:.75;
     transition:transform .18s ease;
   }
   .legal details[open] > summary::before{ transform:rotate(45deg); }
@@ -966,7 +977,7 @@
 </style>
 <!-- Data block JSON-LD : non exécuté, non soumis à script-src (pas de hash CSP). -->
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"NonprofitOrganization","name":"Après la Nuit","url":"https://dwarsard.github.io/apres-la-nuit/","email":"contact.apreslanuit@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Ermenonville","addressCountry":"FR"},"image":"https://dwarsard.github.io/apres-la-nuit/og-card.png","description":"Association d’entraide entre pairs qui accompagne les enfants, adolescents et jeunes adultes après le décès brutal d’un parent : briser l’isolement, libérer la parole, orienter vers des professionnels du deuil.","areaServed":"FR","slogan":"Parce que personne ne devrait avancer seul dans le noir."}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Que se passe-t-il si j’écris ?","acceptedAnswer":{"@type":"Answer","text":"Votre message est lu par un membre désigné de l’association, en confidentialité — dans le cadre qui vous protège, rappelé dans « Vos données », en bas de page —, et cette personne vous répond personnellement. Ensuite, on regarde ensemble ce qui vous aiderait : continuer à échanger par écrit, parler, ou qu’on vous oriente vers un professionnel formé au deuil. Rien ne vous engage."}},{"@type":"Question","name":"Qui va lire mon message ?","acceptedAnswer":{"@type":"Answer","text":"Seuls les membres désignés de l’association lisent les messages qui nous sont adressés. Ce que vous écrivez sert uniquement à vous répondre et à vous accompagner, dans le respect du cadre légal qui protège chacun — les détails sont dans « Vos données », en bas de page."}},{"@type":"Question","name":"C’est payant ?","acceptedAnswer":{"@type":"Answer","text":"Non : nous écrire et être écouté ne coûte rien, et personne ne vous demandera quoi que ce soit pour vous répondre."}},{"@type":"Question","name":"J’ai moins de 18 ans, je peux écrire par moi-même ?","acceptedAnswer":{"@type":"Answer","text":"Oui. Vous pouvez nous écrire par vous-même, même avant 15 ans — les textes le prévoient pour les services d’écoute (voir « Vos données », en bas de page). Pour aller plus loin ensuite, par exemple participer à une activité, l’accord de votre parent ou de vos représentants légaux sera nécessaire : c’est notre cadre de protection des mineurs. Et si vous le pouvez, en parler à un adulte de confiance fait souvent du bien."}},{"@type":"Question","name":"Je ne sais pas quoi dire.","acceptedAnswer":{"@type":"Answer","text":"C’est normal, et ce n’est pas grave. Quelques mots suffisent : qui vous êtes, ce que vous traversez — ou simplement « j’ai besoin de parler ». On avancera à partir de là, à votre rythme."}},{"@type":"Question","name":"Mon parent est mort il y a longtemps. Est-ce que je peux quand même écrire ?","acceptedAnswer":{"@type":"Answer","text":"Oui. Le deuil n’a pas de date limite, et il n’est jamais trop tard pour en parler. Que la perte soit récente ou ancienne, vous êtes au bon endroit."}},{"@type":"Question","name":"Je m’inquiète pour un jeune de mon entourage. Que faire ?","acceptedAnswer":{"@type":"Answer","text":"Écrivez-nous : on réfléchira ensemble à la façon de l’aider, ou de lui transmettre cette page au bon moment. Enseignants, éducateurs, soignants, proches — vous êtes souvent les premiers à voir qu’un jeune ne va pas bien. S’il traverse une détresse importante, appelez le 3114 — gratuit, 24 h/24."}},{"@type":"Question","name":"Est-ce que ça remplace un psychologue ?","acceptedAnswer":{"@type":"Answer","text":"Non, et nous ne le prétendrons jamais. L’entraide entre pairs accompagne ; elle ne remplace pas un soin lorsqu’il est nécessaire. Notre action est encadrée par un référent professionnel, et une partie de notre rôle est justement de vous aider à trouver, si besoin, un professionnel formé au deuil."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Qui va lire mon message ?","acceptedAnswer":{"@type":"Answer","text":"Seuls les membres désignés de l’association lisent les messages qui nous sont adressés. Ce que vous écrivez sert uniquement à vous répondre et à vous accompagner, dans le respect du cadre légal qui protège chacun — les détails sont dans « Vos données », en bas de page."}},{"@type":"Question","name":"C’est payant ?","acceptedAnswer":{"@type":"Answer","text":"Non : nous écrire et être écouté ne coûte rien, et personne ne vous demandera quoi que ce soit pour vous répondre."}},{"@type":"Question","name":"J’ai moins de 18 ans, je peux écrire par moi-même ?","acceptedAnswer":{"@type":"Answer","text":"Oui. Vous pouvez nous écrire par vous-même, même avant 15 ans — les textes le prévoient pour les services d’écoute (voir « Vos données », en bas de page). Pour aller plus loin ensuite, par exemple participer à une activité, l’accord de l’adulte responsable de vous (votre représentant légal) sera nécessaire : c’est notre cadre de protection des mineurs. Et si vous le pouvez, en parler à un adulte de confiance fait souvent du bien."}},{"@type":"Question","name":"Comment protégez-vous les enfants et les adolescents ?","acceptedAnswer":{"@type":"Answer","text":"Par des règles simples, inscrites dans notre règlement intérieur : aucune activité avec un mineur sans l’autorisation écrite préalable de ses représentants légaux ; jamais un bénévole seul avec un mineur — toujours un cadre collectif, ou au moins deux adultes ; un extrait de casier judiciaire (bulletin n° 3) exigé des intervenants au contact de mineurs ; et, pour les échanges individuels à distance, un cadre transparent, autant que possible avec l’information des représentants légaux."}},{"@type":"Question","name":"Je ne sais pas quoi dire.","acceptedAnswer":{"@type":"Answer","text":"C’est normal, et ce n’est pas grave. Quelques mots suffisent : qui vous êtes, ce que vous traversez — ou simplement « j’ai besoin de parler ». On avancera à partir de là, à votre rythme."}},{"@type":"Question","name":"Mon parent est mort il y a longtemps. Est-ce que je peux quand même écrire ?","acceptedAnswer":{"@type":"Answer","text":"Oui. Le deuil n’a pas de date limite, et il n’est jamais trop tard pour en parler. Que la perte soit récente ou ancienne, vous êtes au bon endroit."}},{"@type":"Question","name":"Je m’inquiète pour un jeune de mon entourage. Que faire ?","acceptedAnswer":{"@type":"Answer","text":"Que vous soyez son père ou sa mère, un proche, un enseignant, un éducateur ou un soignant, écrivez-nous : on réfléchira ensemble à la façon de l’aider — vous pouvez écrire pour lui, ou avec lui. S’il traverse une détresse importante, appelez le 3114 — gratuit, 24 h/24."}},{"@type":"Question","name":"Est-ce que ça remplace un psychologue ?","acceptedAnswer":{"@type":"Answer","text":"Non, et nous ne le prétendrons jamais. Accompagner n’est pas soigner : notre rôle est d’être à vos côtés, de pair à pair, et de vous aider à trouver, si besoin, un professionnel formé au deuil — sous le regard du référent professionnel qui encadre notre action."}}]}</script>
 </head>
 <body>
 
@@ -1076,19 +1087,19 @@
         <span class="surtitre">Qui nous sommes</span>
         <h2 id="titre-qui">Une main tendue, de pair à pair</h2>
         <p>Après la Nuit est une association d’entraide entre pairs. Elle rassemble celles et ceux qui ont perdu un parent de manière soudaine, quelle qu’en soit la cause&nbsp;— un accident, un arrêt cardiaque, un suicide, un drame qu’on n’a pas vu venir&nbsp;— pour accompagner ceux qui le vivent aujourd’hui.</p>
-        <p>Notre conviction&nbsp;: personne, et surtout pas un enfant ou un adolescent, ne devrait traverser une telle épreuve sans quelqu’un à ses côtés.</p>
+        <p>Notre conviction&nbsp;: un enfant, un adolescent, un jeune adulte qui traverse une telle épreuve doit pouvoir compter sur une présence à ses côtés.</p>
       </div>
       <div>
         <span class="surtitre">Notre mission</span>
         <h2>Briser l’isolement, libérer la parole</h2>
         <p>Accompagner les enfants, adolescents et jeunes adultes confrontés à la perte soudaine d’un parent.</p>
-        <p>Par l’entraide entre pairs, briser l’isolement, libérer la parole, montrer qu’on peut se reconstruire&nbsp;— sans jamais oublier.</p>
+        <p>Par l’entraide entre pairs, montrer qu’on peut se reconstruire&nbsp;— sans jamais oublier.</p>
       </div>
     </div>
   </section>
 
   <!-- ======================= POURQUOI ======================= -->
-  <section class="pourquoi" id="pourquoi" aria-labelledby="titre-pourquoi">
+  <section class="pourquoi" id="pourquoi" aria-labelledby="titre-pourquoi" tabindex="-1">
     <div class="contenu">
       <span class="surtitre" aria-hidden="true">Pourquoi nous existons</span>
       <h2 id="titre-pourquoi" class="visually-hidden">Pourquoi nous existons</h2>
@@ -1100,7 +1111,7 @@
         <p>Beaucoup de ces jeunes se sentent différents et n’osent pas en parler&#8239;; l’accompagnement adapté reste rare&nbsp;— plus rare encore quand la perte est brutale.</p>
         <p>Le deuil soudain a ses épreuves propres&nbsp;: la sidération, l’absence d’adieu, parfois la médiatisation ou des procédures qui s’ajoutent au chagrin.</p>
       </div>
-      <p class="passerelle">Besoin de parler ce soir&#8239;? Le <a href="tel:3114">3114</a> vous écoute, gratuit, 24&#8239;h/24&nbsp;— ou <a href="#vous-traversez">écrivez-nous</a>.</p>
+      <p class="passerelle">Besoin de parler maintenant&#8239;? Le <a href="tel:3114">3114</a> vous écoute, gratuit, 24&#8239;h/24&nbsp;— ou <a href="#vous-traversez">écrivez-nous</a>.</p>
     </div>
   </section>
 
@@ -1176,7 +1187,7 @@
         </article>
         <article class="valeur">
           <h3>Espoir</h3>
-          <p>Nous parlons de la nuit, mais nous regardons vers le jour.</p>
+          <p>On ne promet pas que la douleur s’efface&nbsp;: on montre qu’on peut se reconstruire.</p>
         </article>
       </div>
     </div>
@@ -1200,8 +1211,8 @@
         </article>
         <article class="public">
           <h3>Vous connaissez un jeune</h3>
-          <p>Un enfant, un adolescent ou un jeune adulte de votre entourage vit cette épreuve&#8239;? Parlons-en. Enseignants, éducateurs, soignants&nbsp;: vous pouvez nous écrire, ou simplement transmettre cette page aux familles concernées&nbsp;— elle est faite pour ça.</p>
-          <a class="lien-carte" href="mailto:contact.apreslanuit@gmail.com?subject=Un%20jeune%20de%20mon%20entourage">Nous écrire<span class="visually-hidden"> — au sujet d’un jeune de votre entourage</span><span aria-hidden="true">&nbsp;→</span></a>
+          <p>Votre enfant, ou un jeune de votre entourage, vit cette épreuve&#8239;? Parent, proche, enseignant, éducateur, soignant&nbsp;: vous pouvez nous écrire pour lui, ou avec lui&nbsp;— l’association est aussi là pour soutenir les proches.</p>
+          <a class="lien-carte" href="mailto:contact.apreslanuit@gmail.com?subject=J%27%C3%A9cris%20pour%20un%20jeune">Nous écrire<span class="visually-hidden"> — vous écrivez pour un jeune</span><span aria-hidden="true">&nbsp;→</span></a>
         </article>
         <article class="public">
           <h3>Vous voulez nous soutenir</h3>
@@ -1211,7 +1222,7 @@
       </div>
 
       <!-- Le chemin, pas à pas : ce qui se passe réellement si vous écrivez -->
-      <div class="parcours" id="si-vous-ecrivez">
+      <div class="parcours" id="si-vous-ecrivez" tabindex="-1">
         <h3>Que se passe-t-il si vous nous écrivez&#8239;?</h3>
         <p class="parcours-intro">Écrire à une association qu’on ne connaît pas, c’est un pas. Voici, simplement, ce qui se passe ensuite.</p>
         <ol class="etapes">
@@ -1235,10 +1246,10 @@
       </div>
 
       <div class="cta-contact" id="contact" tabindex="-1">
-        <a class="bouton bouton-jour" href="mailto:contact.apreslanuit@gmail.com?subject=Prendre%20contact%20avec%20Apr%C3%A8s%20la%20Nuit">Écrivez-nous<span class="visually-hidden"> par courriel (ouvre votre messagerie)</span></a>
+        <a class="bouton bouton-jour" href="mailto:contact.apreslanuit@gmail.com?subject=Prendre%20contact%20avec%20Apr%C3%A8s%20la%20Nuit">Écrivez-nous<span class="visually-hidden"> par e-mail (ouvre votre messagerie)</span></a>
         <p class="triade">Écrire ne coûte rien&nbsp;· Lu en confidentialité par un membre désigné&nbsp;· Réponse personnelle</p>
         <span class="mail">Si rien ne s’ouvre, copiez simplement notre adresse&nbsp;: <a href="mailto:contact.apreslanuit@gmail.com">contact.apreslanuit@gmail.com</a></span>
-        <p class="pont-urgence">Un e-mail n’est pas immédiat&nbsp;— besoin de parler maintenant&#8239;? Le <a href="tel:3114">3114</a> vous écoute, gratuit, 24&#8239;h/24.</p>
+        <p class="pont-urgence">Un e-mail n’est pas immédiat&nbsp;— si c’est urgent, les <a href="#ecoute">numéros d’écoute</a> sont juste en dessous.</p>
       </div>
 
       <!-- Bloc discret : besoin de parler maintenant ? -->
@@ -1255,14 +1266,8 @@
     <div class="contenu">
       <span class="surtitre">Vos questions</span>
       <h2 id="titre-questions">Les questions qu’on se pose avant d’écrire</h2>
-      <p class="faq-intro">Hésiter est normal. Voici, en toute franchise, ce que nous pouvons vous répondre aujourd’hui.</p>
+      <p class="faq-intro">Hésiter est normal. Voici ce que nous pouvons vous répondre aujourd’hui.</p>
       <div class="faq-liste">
-        <details>
-          <summary>Que se passe-t-il si j’écris&#8239;?</summary>
-          <div class="faq-corps">
-            <p>Votre message est lu par un membre désigné de l’association, en confidentialité&nbsp;— dans le cadre qui vous protège, rappelé dans «&#8239;Vos données&#8239;», en bas de page&nbsp;—, et cette personne vous répond personnellement. Ensuite, on regarde ensemble ce qui vous aiderait&nbsp;: continuer à échanger par écrit, parler, ou qu’on vous oriente vers un professionnel formé au deuil. Rien ne vous engage.</p>
-          </div>
-        </details>
         <details>
           <summary>Qui va lire mon message&#8239;?</summary>
           <div class="faq-corps">
@@ -1278,7 +1283,13 @@
         <details>
           <summary>J’ai moins de 18&nbsp;ans, je peux écrire par moi-même&#8239;?</summary>
           <div class="faq-corps">
-            <p>Oui. Vous pouvez nous écrire par vous-même, même avant 15&nbsp;ans&nbsp;— les textes le prévoient pour les services d’écoute (voir «&#8239;Vos données&#8239;», en bas de page). Pour aller plus loin ensuite, par exemple participer à une activité, l’accord de votre parent ou de vos représentants légaux sera nécessaire&nbsp;: c’est notre cadre de protection des mineurs. Et si vous le pouvez, en parler à un adulte de confiance fait souvent du bien.</p>
+            <p>Oui. Vous pouvez nous écrire par vous-même, même avant 15&nbsp;ans&nbsp;— les textes le prévoient pour les services d’écoute (voir «&#8239;Vos données&#8239;», en bas de page). Pour aller plus loin ensuite, par exemple participer à une activité, l’accord de l’adulte responsable de vous (votre représentant légal) sera nécessaire&nbsp;: c’est notre cadre de protection des mineurs. Et si vous le pouvez, en parler à un adulte de confiance fait souvent du bien.</p>
+          </div>
+        </details>
+        <details>
+          <summary>Comment protégez-vous les enfants et les adolescents&#8239;?</summary>
+          <div class="faq-corps">
+            <p>Par des règles simples, inscrites dans notre règlement intérieur&nbsp;: aucune activité avec un mineur sans l’autorisation écrite préalable de ses représentants légaux&#8239;; jamais un bénévole seul avec un mineur&nbsp;— toujours un cadre collectif, ou au moins deux adultes&#8239;; un extrait de casier judiciaire (bulletin n°&#8239;3) exigé des intervenants au contact de mineurs&#8239;; et, pour les échanges individuels à distance, un cadre transparent, autant que possible avec l’information des représentants légaux.</p>
           </div>
         </details>
         <details>
@@ -1296,17 +1307,17 @@
         <details>
           <summary>Je m’inquiète pour un jeune de mon entourage. Que faire&#8239;?</summary>
           <div class="faq-corps">
-            <p>Écrivez-nous&nbsp;: on réfléchira ensemble à la façon de l’aider, ou de lui transmettre cette page au bon moment. Enseignants, éducateurs, soignants, proches&nbsp;— vous êtes souvent les premiers à voir qu’un jeune ne va pas bien. S’il traverse une détresse importante, appelez le <a href="tel:3114">3114</a>&nbsp;— gratuit, 24&#8239;h/24.</p>
+            <p>Que vous soyez son père ou sa mère, un proche, un enseignant, un éducateur ou un soignant, écrivez-nous&nbsp;: on réfléchira ensemble à la façon de l’aider&nbsp;— vous pouvez écrire pour lui, ou avec lui. S’il traverse une détresse importante, appelez le <a href="tel:3114">3114</a>&nbsp;— gratuit, 24&#8239;h/24.</p>
           </div>
         </details>
         <details>
           <summary>Est-ce que ça remplace un psychologue&#8239;?</summary>
           <div class="faq-corps">
-            <p>Non, et nous ne le prétendrons jamais. L’entraide entre pairs accompagne&#8239;; elle ne remplace pas un soin lorsqu’il est nécessaire. Notre action est encadrée par un référent professionnel, et une partie de notre rôle est justement de vous aider à trouver, si besoin, un professionnel formé au deuil.</p>
+            <p>Non, et nous ne le prétendrons jamais. Accompagner n’est pas soigner&nbsp;: notre rôle est d’être à vos côtés, de pair à pair, et de vous aider à trouver, si besoin, un professionnel formé au deuil&nbsp;— sous le regard du référent professionnel qui encadre notre action.</p>
           </div>
         </details>
       </div>
-      <p class="demarrage">Après la Nuit démarre&nbsp;: pas encore de longues années derrière nous, mais une porte grande ouverte&nbsp;— et toute notre attention pour celles et ceux qui la pousseront en premier.</p>
+      <p class="demarrage">Après la Nuit démarre&nbsp;: nous n’avons pas encore d’années d’existence derrière nous. Mais nous sommes là, nous lisons chaque message, et nous répondons.</p>
       <p class="faq-suite"><a href="#contact">Écrivez-nous</a>&nbsp;— ou, si c’est urgent, appelez le <a href="tel:3114">3114</a>, gratuit, 24&#8239;h/24.</p>
     </div>
   </section>
@@ -1323,7 +1334,7 @@
     </svg>
     <p><strong>Après la Nuit</strong>&nbsp;— association régie par la loi du 1<sup>er</sup> juillet 1901.</p>
     <p>Contact&nbsp;: <a href="mailto:contact.apreslanuit@gmail.com">contact.apreslanuit@gmail.com</a></p>
-    <p>Besoin de parler&#8239;? <a href="tel:3114">3114</a> (gratuit, 24&#8239;h/24) · Fil Santé Jeunes&nbsp;: <a href="tel:0800235236">0&nbsp;800&nbsp;235&nbsp;236</a> (anonyme et gratuit, de 9&#8239;h à 23&#8239;h).</p>
+    <p>Besoin de parler&#8239;? <a href="tel:3114">3114</a> (gratuit, 24&#8239;h/24)&nbsp;· Fil Santé Jeunes&nbsp;: <a href="tel:0800235236">0&nbsp;800&nbsp;235&nbsp;236</a> (anonyme et gratuit, de 9&#8239;h à 23&#8239;h).</p>
     <p class="devise">Après la nuit vient le jour&nbsp;— à son heure, pour chacun.</p>
     <p class="retour"><a href="#haut"><span aria-hidden="true">↑&nbsp;</span>Revenir au début</a></p>
 
