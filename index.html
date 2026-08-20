@@ -20,9 +20,13 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Ciel étoilé qui s’éclaircit vers l’aube — Après la Nuit, l’entraide des jeunes qui ont perdu un parent">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Après la Nuit — L’entraide de celles et ceux qui ont perdu un parent trop tôt, trop vite.">
+<meta name="twitter:description" content="Association d’entraide entre pairs pour les jeunes confrontés à la perte soudaine d’un parent. Briser l’isolement, libérer la parole, se reconstruire — sans jamais oublier.">
 <meta name="twitter:image" content="https://dwarsard.github.io/apres-la-nuit/og-card.png">
+<meta name="twitter:image:alt" content="Ciel étoilé qui s’éclaircit vers l’aube — Après la Nuit, l’entraide des jeunes qui ont perdu un parent">
 <meta name="theme-color" content="#0c1531">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%23142850'/%3E%3Cpath%20d='M32%2011l2.6%206.4%206.4%202.6-6.4%202.6-2.6%206.4-2.6-6.4-6.4-2.6%206.4-2.6z'%20fill='%23f6d189'/%3E%3Cpath%20d='M9%2054a23%2023%200%200%201%2046%200z'%20fill='%23f2a65a'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <script>document.documentElement.className += ' js';</script>
 <style>
   /* ==========================================================
@@ -590,6 +594,62 @@
     overflow-wrap:anywhere;
   }
 
+  /* ---------- Si vous nous écrivez : le chemin, pas à pas ---------- */
+  .parcours{
+    margin:0 0 3.25rem;
+    text-align:center;
+  }
+  .parcours h3{
+    font-size:clamp(1.25rem, 3vw, 1.5rem);
+    color:var(--texte-sombre);
+    margin-bottom:.4rem;
+  }
+  .parcours-intro{
+    font-size:.95rem;
+    color:var(--texte-sombre-2);
+    max-width:34em;
+    margin:0 auto;
+  }
+  .etapes{
+    list-style:none;
+    counter-reset:etape;
+    margin:2rem 0 0;
+    padding:0;
+    display:grid;
+    gap:1.5rem 2rem;
+    text-align:left;
+  }
+  @media (min-width:640px){ .etapes{ grid-template-columns:1fr 1fr; } }
+  @media (min-width:1100px){ .etapes{ grid-template-columns:repeat(4,1fr); } }
+  .etape{
+    counter-increment:etape;
+    padding-top:.85rem;
+    border-top:1px solid rgba(124,63,20,.22);
+  }
+  .etape::before{
+    content:counter(etape, decimal-leading-zero);
+    font-family:var(--serif);
+    font-size:.9375rem;
+    letter-spacing:.18em;
+    color:var(--lien-sombre);
+    display:block;
+    margin-bottom:.55rem;
+  }
+  .etape-titre{
+    display:block;
+    font-family:var(--serif);
+    font-weight:400;
+    font-size:1.125rem;
+    line-height:1.35;
+    color:var(--texte-sombre);
+    margin-bottom:.35rem;
+  }
+  .etape p{
+    margin:0;
+    font-size:.95rem;
+    color:var(--texte-sombre-2);
+  }
+
   .cta-contact{ text-align:center; scroll-margin-top:clamp(1.5rem, 5vw, 2.5rem); }
   .bouton-jour{
     background:#33284a;
@@ -605,7 +665,9 @@
   }
   .cta-contact .mail a{ color:var(--lien-sombre); }
   .copier{
-    display:inline-block;
+    display:inline-flex;
+    align-items:center;
+    min-height:44px;
     margin-top:.75rem;
     font:inherit;
     font-size:.875rem;
@@ -616,11 +678,26 @@
     color:var(--lien-sombre);
     cursor:pointer;
   }
-  .rassurance{
+  /* Triade de réassurance, au point exact de la décision */
+  .triade{
     max-width:34em;
-    margin:1.25rem auto 0;
+    margin:1rem auto 0;
+    font-size:.875rem;
+    letter-spacing:.02em;
+    color:var(--texte-sombre-2);
+  }
+  /* Un e-mail n’est pas immédiat : la main tendue vers le 3114 */
+  .pont-urgence{
+    max-width:34em;
+    margin:1.4rem auto 0;
     font-size:.95rem;
     color:var(--texte-sombre-2);
+  }
+  .pont-urgence a{
+    color:var(--lien-sombre);
+    font-weight:600;
+    text-decoration-thickness:1px;
+    white-space:nowrap;
   }
 
   /* ---------- Besoin de parler maintenant ? ---------- */
@@ -666,10 +743,93 @@
   }
 
   /* ==========================================================
+     VOS QUESTIONS : le plein jour — on répond en clair
+     ========================================================== */
+  .faq{
+    background:linear-gradient(180deg, var(--jour-1), var(--jour-2));
+    color:var(--texte-sombre);
+  }
+  .faq h2{ color:var(--texte-sombre); }
+  .faq-intro{
+    max-width:36em;
+    color:var(--texte-sombre-2);
+  }
+  .faq-liste{ margin-top:2.25rem; }
+  .faq-liste details{ border-top:1px solid rgba(124,63,20,.18); }
+  .faq-liste details:last-of-type{ border-bottom:1px solid rgba(124,63,20,.18); }
+  .faq-liste summary{
+    display:flex;
+    align-items:center;
+    gap:.75rem;
+    min-height:44px;
+    padding:1.05rem .35rem;
+    font-family:var(--serif);
+    font-size:1.125rem;
+    line-height:1.4;
+    color:var(--texte-sombre);
+    cursor:pointer;
+    list-style:none;
+    border-radius:.4rem;
+    -webkit-user-select:none;
+    user-select:none;
+  }
+  .faq-liste summary::-webkit-details-marker{ display:none; }
+  .faq-liste summary::before{
+    content:"";
+    flex:none;
+    width:.42em;
+    height:.42em;
+    border-right:1.5px solid var(--lien-sombre);
+    border-bottom:1.5px solid var(--lien-sombre);
+    transform:rotate(-45deg);
+    opacity:.75;
+    transition:transform .18s ease;
+  }
+  .faq-liste details[open] > summary::before{ transform:rotate(45deg); }
+  @media (hover:hover){
+    .faq-liste summary:hover{ background:rgba(232,133,63,.08); }
+  }
+  .faq-liste summary:active{ background:rgba(232,133,63,.14); }
+  .faq-corps{
+    padding:.1rem .35rem 1.5rem 1.45rem;
+    font-size:.975rem;
+    color:var(--texte-sombre-2);
+  }
+  .faq-corps a{
+    color:var(--lien-sombre);
+    font-weight:600;
+    text-decoration-thickness:1px;
+    white-space:nowrap;
+  }
+  /* Une association qui démarre : le dire, sobrement */
+  .demarrage{
+    margin:2.75rem auto 0;
+    max-width:36em;
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:1.0625rem;
+    line-height:1.65;
+    color:#6d4419;
+    text-align:center;
+  }
+  .faq-suite{
+    margin-top:1.5rem;
+    text-align:center;
+    font-size:.95rem;
+    color:var(--texte-sombre-2);
+  }
+  .faq-suite a{
+    color:var(--lien-sombre);
+    font-weight:600;
+    text-decoration-thickness:1px;
+  }
+  .faq-suite a[href^="tel"]{ white-space:nowrap; }
+
+  /* ==========================================================
      PIED DE PAGE : lumineux — le jour est là
      ========================================================== */
   footer{
-    background:linear-gradient(180deg, var(--jour-1), var(--jour-2));
+    background:var(--jour-2);
     color:var(--texte-sombre-2);
     text-align:center;
     padding:clamp(3rem, 7vw, 4.5rem) 0 2.5rem;
@@ -768,6 +928,7 @@
     :root{ --texte-clair-2:#e8edf8; --texte-sombre-2:#33284a; --lien-sombre:#4a2208; }
     .carte-action{ background:rgba(10,14,38,.85); border-color:rgba(246,209,137,.65); }
     .valeur,.public,.ecoute{ background:#fffdf8; border-color:rgba(74,34,8,.55); }
+    .etape,.faq-liste details{ border-color:rgba(74,34,8,.55); }
     .bouton-contour{ border-color:#fff; }
     .nav-toggle{ border-color:#fff; }
     .nav-appel{ border-color:var(--etoile); }
@@ -780,7 +941,7 @@
     @page{ margin:1.8cm; }
     html, body{ background:#fff; }
     body{ color:#1a1a1a; font-size:11pt; line-height:1.5; }
-    .heros,.manifeste,.qui,.pourquoi,.actions,.rayon,.valeurs,.rejoindre,footer{ background:none; }
+    .heros,.manifeste,.qui,.pourquoi,.actions,.rayon,.valeurs,.rejoindre,.faq,footer{ background:none; }
     section, .rayon{ padding:1.1rem 0; }
     .ciel,.skip-link,.nav-toggle,.nav-appel,.nav-principale,.heros-actions,.copier,footer .retour{ display:none; }
     .heros{ padding-bottom:.5rem; }
@@ -791,6 +952,9 @@
     .qui p,.chiffre-cle .grand,.chiffre-cle .grand strong,.chiffre-cle figcaption,
     .pourquoi .detail,.passerelle,.carte-action .num,.carte-action h3,.carte-action p,
     .valeur h3,.valeur p,.public h3,.public p,footer .devise{ color:#1a1a1a; }
+    .parcours h3,.parcours-intro,.etape::before,.etape-titre,.etape p,.triade,.pont-urgence,
+    .faq-intro,.faq-liste summary,.faq-corps,.demarrage,.faq-suite{ color:#1a1a1a; }
+    .etape,.faq-liste details{ break-inside:avoid; }
     a,.appel-hero a,.passerelle a,.lien-carte,.ecoute a,.cta-contact .mail a,footer a{ color:#1a1a1a; }
     .carte-action,.valeur,.public,.encadre,.ecoute{ background:#fff; border:1px solid #999; box-shadow:none; break-inside:avoid; }
     .encadre{ border-top:3px solid #1a1a1a; }
@@ -801,7 +965,8 @@
   }
 </style>
 <!-- Data block JSON-LD : non exécuté, non soumis à script-src (pas de hash CSP). -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"NonprofitOrganization","name":"Après la Nuit","url":"https://dwarsard.github.io/apres-la-nuit/","email":"contact.apreslanuit@gmail.com","description":"Association d’entraide entre pairs qui accompagne les enfants, adolescents et jeunes adultes après le décès brutal d’un parent : briser l’isolement, libérer la parole, orienter vers des professionnels du deuil.","areaServed":"FR","slogan":"Parce que personne ne devrait avancer seul dans le noir."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"NonprofitOrganization","name":"Après la Nuit","url":"https://dwarsard.github.io/apres-la-nuit/","email":"contact.apreslanuit@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Ermenonville","addressCountry":"FR"},"image":"https://dwarsard.github.io/apres-la-nuit/og-card.png","description":"Association d’entraide entre pairs qui accompagne les enfants, adolescents et jeunes adultes après le décès brutal d’un parent : briser l’isolement, libérer la parole, orienter vers des professionnels du deuil.","areaServed":"FR","slogan":"Parce que personne ne devrait avancer seul dans le noir."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Que se passe-t-il si j’écris ?","acceptedAnswer":{"@type":"Answer","text":"Votre message est lu par un membre désigné de l’association, en confidentialité — dans le cadre qui vous protège, rappelé dans « Vos données », en bas de page —, et cette personne vous répond personnellement. Ensuite, on regarde ensemble ce qui vous aiderait : continuer à échanger par écrit, parler, ou qu’on vous oriente vers un professionnel formé au deuil. Rien ne vous engage."}},{"@type":"Question","name":"Qui va lire mon message ?","acceptedAnswer":{"@type":"Answer","text":"Seuls les membres désignés de l’association lisent les messages qui nous sont adressés. Ce que vous écrivez sert uniquement à vous répondre et à vous accompagner, dans le respect du cadre légal qui protège chacun — les détails sont dans « Vos données », en bas de page."}},{"@type":"Question","name":"C’est payant ?","acceptedAnswer":{"@type":"Answer","text":"Non : nous écrire et être écouté ne coûte rien, et personne ne vous demandera quoi que ce soit pour vous répondre."}},{"@type":"Question","name":"J’ai moins de 18 ans, je peux écrire par moi-même ?","acceptedAnswer":{"@type":"Answer","text":"Oui. Vous pouvez nous écrire par vous-même, même avant 15 ans — les textes le prévoient pour les services d’écoute (voir « Vos données », en bas de page). Pour aller plus loin ensuite, par exemple participer à une activité, l’accord de votre parent ou de vos représentants légaux sera nécessaire : c’est notre cadre de protection des mineurs. Et si vous le pouvez, en parler à un adulte de confiance fait souvent du bien."}},{"@type":"Question","name":"Je ne sais pas quoi dire.","acceptedAnswer":{"@type":"Answer","text":"C’est normal, et ce n’est pas grave. Quelques mots suffisent : qui vous êtes, ce que vous traversez — ou simplement « j’ai besoin de parler ». On avancera à partir de là, à votre rythme."}},{"@type":"Question","name":"Mon parent est mort il y a longtemps. Est-ce que je peux quand même écrire ?","acceptedAnswer":{"@type":"Answer","text":"Oui. Le deuil n’a pas de date limite, et il n’est jamais trop tard pour en parler. Que la perte soit récente ou ancienne, vous êtes au bon endroit."}},{"@type":"Question","name":"Je m’inquiète pour un jeune de mon entourage. Que faire ?","acceptedAnswer":{"@type":"Answer","text":"Écrivez-nous : on réfléchira ensemble à la façon de l’aider, ou de lui transmettre cette page au bon moment. Enseignants, éducateurs, soignants, proches — vous êtes souvent les premiers à voir qu’un jeune ne va pas bien. S’il traverse une détresse importante, appelez le 3114 — gratuit, 24 h/24."}},{"@type":"Question","name":"Est-ce que ça remplace un psychologue ?","acceptedAnswer":{"@type":"Answer","text":"Non, et nous ne le prétendrons jamais. L’entraide entre pairs accompagne ; elle ne remplace pas un soin lorsqu’il est nécessaire. Notre action est encadrée par un référent professionnel, et une partie de notre rôle est justement de vous aider à trouver, si besoin, un professionnel formé au deuil."}}]}</script>
 </head>
 <body>
 
@@ -865,6 +1030,7 @@
         <li><a href="#actions">Nos actions</a></li>
         <li><a href="#valeurs">Nos valeurs</a></li>
         <li><a href="#rejoindre">Nous rejoindre</a></li>
+        <li><a href="#questions">Vos questions</a></li>
       </ul>
     </nav>
     <div class="barre-outils">
@@ -1043,10 +1209,36 @@
           <a class="lien-carte" href="mailto:contact.apreslanuit@gmail.com?subject=Soutenir%20l%27association">Nous écrire<span class="visually-hidden"> — pour soutenir l’association</span><span aria-hidden="true">&nbsp;→</span></a>
         </article>
       </div>
+
+      <!-- Le chemin, pas à pas : ce qui se passe réellement si vous écrivez -->
+      <div class="parcours" id="si-vous-ecrivez">
+        <h3>Que se passe-t-il si vous nous écrivez&#8239;?</h3>
+        <p class="parcours-intro">Écrire à une association qu’on ne connaît pas, c’est un pas. Voici, simplement, ce qui se passe ensuite.</p>
+        <ol class="etapes">
+          <li class="etape">
+            <strong class="etape-titre">Vous écrivez</strong>
+            <p>Quelques mots suffisent&nbsp;: qui vous êtes, ce que vous traversez, ou la personne pour qui vous écrivez. Il n’y a pas de bonne façon de commencer.</p>
+          </li>
+          <li class="etape">
+            <strong class="etape-titre">Votre message est lu, en confiance</strong>
+            <p>Un membre désigné de l’association le lit, en confidentialité&nbsp;— le cadre qui vous protège est rappelé dans «&#8239;Vos données&#8239;», en bas de page.</p>
+          </li>
+          <li class="etape">
+            <strong class="etape-titre">Quelqu’un vous répond</strong>
+            <p>Pas une réponse automatique&nbsp;: un membre de l’association vous écrit, personnellement.</p>
+          </li>
+          <li class="etape">
+            <strong class="etape-titre">On avance ensemble</strong>
+            <p>À votre rythme, on regarde ce qui vous aiderait&nbsp;: continuer à échanger par écrit, parler, ou qu’on vous oriente vers un professionnel formé au deuil.</p>
+          </li>
+        </ol>
+      </div>
+
       <div class="cta-contact" id="contact" tabindex="-1">
         <a class="bouton bouton-jour" href="mailto:contact.apreslanuit@gmail.com?subject=Prendre%20contact%20avec%20Apr%C3%A8s%20la%20Nuit">Écrivez-nous<span class="visually-hidden"> par courriel (ouvre votre messagerie)</span></a>
+        <p class="triade">Écrire ne coûte rien&nbsp;· Lu en confidentialité par un membre désigné&nbsp;· Réponse personnelle</p>
         <span class="mail">Si rien ne s’ouvre, copiez simplement notre adresse&nbsp;: <a href="mailto:contact.apreslanuit@gmail.com">contact.apreslanuit@gmail.com</a></span>
-        <p class="rassurance">Quelques mots suffisent&nbsp;— qui vous êtes, ce que vous traversez ou la personne pour qui vous écrivez. Votre message est lu en toute confidentialité par un membre de l’association, qui vous répondra personnellement.</p>
+        <p class="pont-urgence">Un e-mail n’est pas immédiat&nbsp;— besoin de parler maintenant&#8239;? Le <a href="tel:3114">3114</a> vous écoute, gratuit, 24&#8239;h/24.</p>
       </div>
 
       <!-- Bloc discret : besoin de parler maintenant ? -->
@@ -1055,6 +1247,67 @@
         <p>À toute heure, le <a href="tel:3114">3114</a> vous écoute&nbsp;— gratuit, 24&#8239;h/24, même si vous ne savez pas quoi dire.</p>
         <p>De 9&#8239;h à 23&#8239;h, Fil Santé Jeunes vous répond au <a href="tel:0800235236">0&nbsp;800&nbsp;235&nbsp;236</a>&nbsp;— appel anonyme et gratuit.</p>
       </aside>
+    </div>
+  </section>
+
+  <!-- ======================= VOS QUESTIONS ======================= -->
+  <section class="faq clair" id="questions" aria-labelledby="titre-questions" tabindex="-1">
+    <div class="contenu">
+      <span class="surtitre">Vos questions</span>
+      <h2 id="titre-questions">Les questions qu’on se pose avant d’écrire</h2>
+      <p class="faq-intro">Hésiter est normal. Voici, en toute franchise, ce que nous pouvons vous répondre aujourd’hui.</p>
+      <div class="faq-liste">
+        <details>
+          <summary>Que se passe-t-il si j’écris&#8239;?</summary>
+          <div class="faq-corps">
+            <p>Votre message est lu par un membre désigné de l’association, en confidentialité&nbsp;— dans le cadre qui vous protège, rappelé dans «&#8239;Vos données&#8239;», en bas de page&nbsp;—, et cette personne vous répond personnellement. Ensuite, on regarde ensemble ce qui vous aiderait&nbsp;: continuer à échanger par écrit, parler, ou qu’on vous oriente vers un professionnel formé au deuil. Rien ne vous engage.</p>
+          </div>
+        </details>
+        <details>
+          <summary>Qui va lire mon message&#8239;?</summary>
+          <div class="faq-corps">
+            <p>Seuls les membres désignés de l’association lisent les messages qui nous sont adressés. Ce que vous écrivez sert uniquement à vous répondre et à vous accompagner, dans le respect du cadre légal qui protège chacun&nbsp;— les détails sont dans «&#8239;Vos données&#8239;», en bas de page.</p>
+          </div>
+        </details>
+        <details>
+          <summary>C’est payant&#8239;?</summary>
+          <div class="faq-corps">
+            <p>Non&nbsp;: nous écrire et être écouté ne coûte rien, et personne ne vous demandera quoi que ce soit pour vous répondre.</p>
+          </div>
+        </details>
+        <details>
+          <summary>J’ai moins de 18&nbsp;ans, je peux écrire par moi-même&#8239;?</summary>
+          <div class="faq-corps">
+            <p>Oui. Vous pouvez nous écrire par vous-même, même avant 15&nbsp;ans&nbsp;— les textes le prévoient pour les services d’écoute (voir «&#8239;Vos données&#8239;», en bas de page). Pour aller plus loin ensuite, par exemple participer à une activité, l’accord de votre parent ou de vos représentants légaux sera nécessaire&nbsp;: c’est notre cadre de protection des mineurs. Et si vous le pouvez, en parler à un adulte de confiance fait souvent du bien.</p>
+          </div>
+        </details>
+        <details>
+          <summary>Je ne sais pas quoi dire.</summary>
+          <div class="faq-corps">
+            <p>C’est normal, et ce n’est pas grave. Quelques mots suffisent&nbsp;: qui vous êtes, ce que vous traversez&nbsp;— ou simplement «&#8239;j’ai besoin de parler&#8239;». On avancera à partir de là, à votre rythme.</p>
+          </div>
+        </details>
+        <details>
+          <summary>Mon parent est mort il y a longtemps. Est-ce que je peux quand même écrire&#8239;?</summary>
+          <div class="faq-corps">
+            <p>Oui. Le deuil n’a pas de date limite, et il n’est jamais trop tard pour en parler. Que la perte soit récente ou ancienne, vous êtes au bon endroit.</p>
+          </div>
+        </details>
+        <details>
+          <summary>Je m’inquiète pour un jeune de mon entourage. Que faire&#8239;?</summary>
+          <div class="faq-corps">
+            <p>Écrivez-nous&nbsp;: on réfléchira ensemble à la façon de l’aider, ou de lui transmettre cette page au bon moment. Enseignants, éducateurs, soignants, proches&nbsp;— vous êtes souvent les premiers à voir qu’un jeune ne va pas bien. S’il traverse une détresse importante, appelez le <a href="tel:3114">3114</a>&nbsp;— gratuit, 24&#8239;h/24.</p>
+          </div>
+        </details>
+        <details>
+          <summary>Est-ce que ça remplace un psychologue&#8239;?</summary>
+          <div class="faq-corps">
+            <p>Non, et nous ne le prétendrons jamais. L’entraide entre pairs accompagne&#8239;; elle ne remplace pas un soin lorsqu’il est nécessaire. Notre action est encadrée par un référent professionnel, et une partie de notre rôle est justement de vous aider à trouver, si besoin, un professionnel formé au deuil.</p>
+          </div>
+        </details>
+      </div>
+      <p class="demarrage">Après la Nuit démarre&nbsp;: pas encore de longues années derrière nous, mais une porte grande ouverte&nbsp;— et toute notre attention pour celles et ceux qui la pousseront en premier.</p>
+      <p class="faq-suite"><a href="#contact">Écrivez-nous</a>&nbsp;— ou, si c’est urgent, appelez le <a href="tel:3114">3114</a>, gratuit, 24&#8239;h/24.</p>
     </div>
   </section>
 </main>
@@ -1070,7 +1323,7 @@
     </svg>
     <p><strong>Après la Nuit</strong>&nbsp;— association régie par la loi du 1<sup>er</sup> juillet 1901.</p>
     <p>Contact&nbsp;: <a href="mailto:contact.apreslanuit@gmail.com">contact.apreslanuit@gmail.com</a></p>
-    <p>Besoin de parler&#8239;? <a href="tel:3114">3114</a> (gratuit, 24&#8239;h/24) · Fil Santé Jeunes&nbsp;: <a href="tel:0800235236">0&nbsp;800&nbsp;235&nbsp;236</a> (de 9&#8239;h à 23&#8239;h).</p>
+    <p>Besoin de parler&#8239;? <a href="tel:3114">3114</a> (gratuit, 24&#8239;h/24) · Fil Santé Jeunes&nbsp;: <a href="tel:0800235236">0&nbsp;800&nbsp;235&nbsp;236</a> (anonyme et gratuit, de 9&#8239;h à 23&#8239;h).</p>
     <p class="devise">Après la nuit vient le jour&nbsp;— à son heure, pour chacun.</p>
     <p class="retour"><a href="#haut"><span aria-hidden="true">↑&nbsp;</span>Revenir au début</a></p>
 
