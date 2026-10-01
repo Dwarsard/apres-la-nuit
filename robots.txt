@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dwarsard.github.io/apres-la-nuit/sitemap.xml

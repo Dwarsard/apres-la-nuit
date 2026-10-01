@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-DamCoPgB/VkDCPsu0R6X4sJsz1c66vGlUGBXLu04Yxg=' 'sha256-ZG+ixAg17JCVViKZgB4TKPJ+/24uZUiQLmsi3J2hYn0='; style-src 'unsafe-inline'; img-src data: 'self'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-DamCoPgB/VkDCPsu0R6X4sJsz1c66vGlUGBXLu04Yxg=' 'sha256-Vlsap+NuGATyWolkuYOEBetBoQhXb8oHbnet7mVZiuE='; style-src 'unsafe-inline'; img-src data: 'self'; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="no-referrer">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="canonical" href="https://dwarsard.github.io/apres-la-nuit/">
@@ -16,6 +16,7 @@
 <meta property="og:site_name" content="Après la Nuit">
 <meta property="og:url" content="https://dwarsard.github.io/apres-la-nuit/">
 <meta property="og:image" content="https://dwarsard.github.io/apres-la-nuit/og-card.png">
+<meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Ciel étoilé qui s’éclaircit vers l’aube — Après la Nuit, l’entraide des jeunes qui ont perdu un parent">
@@ -27,7 +28,6 @@
 <meta name="theme-color" content="#0c1531">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%23142850'/%3E%3Cpath%20d='M32%207l3%209%209%203-9%203-3%209-3-9-9-3%209-3z'%20fill='%23f6d189'/%3E%3Cpath%20d='M9%2054a23%2023%200%200%201%2046%200z'%20fill='%23f2a65a'/%3E%3C/svg%3E">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <script>document.documentElement.className += ' js';</script>
 <style>
   /* ==========================================================
@@ -108,6 +108,7 @@
   p, figcaption{ text-wrap:pretty; }
 
   a{ color:inherit; }
+  a,button{ touch-action:manipulation; }
   :focus-visible{
     outline:3px solid var(--etoile);
     outline-offset:3px;
@@ -323,6 +324,32 @@
     color:var(--texte-clair-2);
     max-width:34em;
     margin:0 auto 2.5rem;
+  }
+
+  /* Trois repères concrets, visibles avant le premier clic. */
+  .reperes-confiance{
+    list-style:none;
+    display:flex;
+    flex-wrap:wrap;
+    gap:.55rem .7rem;
+    margin:1.5rem 0 0;
+    padding:0;
+    color:var(--texte-clair-2);
+    font-size:.9rem;
+  }
+  .reperes-confiance li{
+    display:inline-flex;
+    align-items:center;
+    gap:.45rem;
+  }
+  .reperes-confiance li::before{
+    content:"";
+    width:.38rem;
+    height:.38rem;
+    flex:none;
+    border-radius:50%;
+    background:var(--etoile);
+    box-shadow:0 0 .6rem rgba(246,209,137,.35);
   }
   .heros-actions{
     display:flex;
@@ -947,6 +974,15 @@
     .ecoute a[href^="tel"], footer a[href^="tel"]{ border-color:rgba(74,34,8,.6); }
   }
 
+  /* Windows et navigateurs en couleurs forcées : conserver les contours utiles. */
+  @media (forced-colors: active){
+    .bouton,.nav-appel,.nav-toggle,.public,.valeur,.carte-action,.encadre,.ecoute{
+      border:1px solid CanvasText;
+    }
+    .reperes-confiance li::before{ background:CanvasText; box-shadow:none; }
+    :focus-visible{ outline-color:Highlight; }
+  }
+
   /* Impression sobre : un enseignant peut imprimer la page,
      les numéros et l’adresse restent lisibles en toutes lettres. */
   @media print{
@@ -1047,7 +1083,7 @@
     </nav>
     <div class="barre-outils">
       <a class="nav-appel" href="#ecoute">Besoin de parler&#8239;?</a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu-principal">Menu</button>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Ouvrir le menu">Menu</button>
     </div>
   </div>
 
@@ -1055,6 +1091,11 @@
     <h1>Après <span class="fine">la Nuit</span></h1>
     <p class="tagline">L’entraide de celles et ceux qui ont perdu un parent trop tôt, trop vite.</p>
     <p class="precision">Association d’entraide entre pairs&nbsp;— pour les enfants, adolescents et jeunes adultes.</p>
+    <ul class="reperes-confiance" aria-label="Nos engagements essentiels">
+      <li>Écrire est gratuit</li>
+      <li>Écoute entre pairs</li>
+      <li>Réponse personnelle</li>
+    </ul>
     <div class="heros-actions">
       <a class="bouton bouton-plein" href="#contact">Écrivez-nous<span class="visually-hidden"> — aller à la section contact</span></a>
       <a class="bouton bouton-contour" href="#manifeste">Découvrir l’association</a>
@@ -1106,7 +1147,7 @@
       <h2 id="titre-pourquoi" class="visually-hidden">Pourquoi nous existons</h2>
       <figure class="chiffre-cle">
         <p class="grand">En France, en moyenne, <strong>un enfant par classe</strong> est orphelin.</p>
-        <figcaption>Enquête «&#8239;École et orphelins&#8239;», Ifop pour l’OCIRP, 2017.</figcaption>
+        <figcaption><a href="https://www.ifop.com/article/ecole-et-orphelins-mieux-comprendre-pour-mieux-accompagner/">Enquête «&#8239;École et orphelins&#8239;», Ifop pour l’OCIRP, 2017<span class="visually-hidden"> — consulter la source</span></a>.</figcaption>
       </figure>
       <div class="detail">
         <p>Beaucoup de ces jeunes se sentent différents et n’osent pas en parler&#8239;; l’accompagnement adapté reste rare&nbsp;— plus rare encore quand la perte est brutale.</p>
@@ -1347,7 +1388,7 @@
           <p><strong>Éditeur</strong>&nbsp;: Après la Nuit, association régie par la loi du 1<sup>er</sup> juillet 1901, en cours de déclaration en préfecture (la publication au Journal officiel des associations&nbsp;— JOAFE&nbsp;— suivra). Siège&nbsp;: Ermenonville (Oise)&nbsp;— l’adresse complète est communiquée sur demande écrite à <a href="mailto:contact.apreslanuit@gmail.com">contact.apreslanuit@gmail.com</a>.</p>
           <p><strong>Directeur de la publication</strong>&nbsp;: Lucas Marroig, président de l’association.</p>
           <p><strong>Contact</strong>&nbsp;: <a href="mailto:contact.apreslanuit@gmail.com">contact.apreslanuit@gmail.com</a></p>
-          <p><strong>Hébergeur</strong>&nbsp;: GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis&nbsp;— téléphone&nbsp;: +1&nbsp;877&nbsp;448&nbsp;4820 (service GitHub Pages&nbsp;— pages.github.com).</p>
+          <p><strong>Hébergeur</strong>&nbsp;: GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis&nbsp;— téléphone&nbsp;: +1&nbsp;877&nbsp;448&nbsp;4820 (service <a href="https://pages.github.com/">GitHub Pages</a>).</p>
         </div>
       </details>
       <details>
@@ -1356,7 +1397,7 @@
           <p>Ce site ne dépose aucun cookie et nous n’y collectons, nous-mêmes, aucune information pendant votre visite. Seul notre hébergeur (GitHub) enregistre des données techniques, comme l’adresse IP, le temps de faire fonctionner le site.</p>
           <p>Si vous nous écrivez, nous recevons votre adresse e-mail et ce que vous choisissez de nous dire. Ces messages servent uniquement à vous répondre et à vous accompagner. Ils sont lus par les seuls membres désignés de l’association et sont supprimés dès qu’ils ne sont plus nécessaires. Nous ne les transmettons à personne d’autre, sauf si la loi nous y oblige&nbsp;— par exemple pour alerter les personnes capables de protéger quelqu’un qui serait en danger. C’est le même cadre légal que celui rappelé dans nos valeurs.</p>
           <p>Ce qui nous y autorise&nbsp;: la mission d’accompagnement de l’association (ce que le RGPD appelle l’«&#8239;intérêt légitime&#8239;»). Si vous avez moins de 15&nbsp;ans, vous pouvez nous écrire par vous-même&nbsp;— les textes le prévoient pour les services d’écoute et de conseil (considérant 38 du RGPD)&nbsp;— et, si vous le souhaitez, en parler à un adulte de confiance.</p>
-          <p><strong>Vos droits</strong>&nbsp;: vous pouvez demander à voir, corriger ou faire supprimer ce qui vous concerne, ou demander qu’on limite son utilisation, en écrivant à <a href="mailto:contact.apreslanuit@gmail.com">contact.apreslanuit@gmail.com</a>. Vous pouvez aussi, à tout moment et sans avoir à vous justifier, vous opposer à ce que nous conservions ou utilisions vos messages&nbsp;: il suffit de nous le dire. Enfin, vous pouvez contacter la CNIL, l’autorité qui veille sur les données personnelles en France (cnil.fr).</p>
+          <p><strong>Vos droits</strong>&nbsp;: vous pouvez demander à voir, corriger ou faire supprimer ce qui vous concerne, ou demander qu’on limite son utilisation, en écrivant à <a href="mailto:contact.apreslanuit@gmail.com">contact.apreslanuit@gmail.com</a>. Vous pouvez aussi, à tout moment et sans avoir à vous justifier, vous opposer à ce que nous conservions ou utilisions vos messages&nbsp;: il suffit de nous le dire. Enfin, vous pouvez contacter la <a href="https://www.cnil.fr/">CNIL</a>, l’autorité qui veille sur les données personnelles en France.</p>
         </div>
       </details>
     </div>
@@ -1377,6 +1418,7 @@
     btn.addEventListener('click', function(){
       var ouvert = nav.classList.toggle('ouvert');
       btn.setAttribute('aria-expanded', ouvert ? 'true' : 'false');
+      btn.setAttribute('aria-label', ouvert ? 'Fermer le menu' : 'Ouvrir le menu');
       /* Dans le DOM, le nav précède le bouton : on amène le focus
          au premier lien pour que le menu ouvert soit découvrable au clavier. */
       if (ouvert) {
@@ -1389,6 +1431,7 @@
       if ((e.key === 'Escape' || e.key === 'Esc') && nav.classList.contains('ouvert')) {
         nav.classList.remove('ouvert');
         btn.setAttribute('aria-expanded', 'false');
+        btn.setAttribute('aria-label', 'Ouvrir le menu');
         btn.focus();
       }
     });
@@ -1397,6 +1440,7 @@
       if (lien) {
         nav.classList.remove('ouvert');
         btn.setAttribute('aria-expanded', 'false');
+        btn.setAttribute('aria-label', 'Ouvrir le menu');
       }
     });
     /* La pastille « Besoin de parler ? » est hors du nav : elle doit aussi refermer le menu */
@@ -1405,8 +1449,17 @@
       appel.addEventListener('click', function(){
         nav.classList.remove('ouvert');
         btn.setAttribute('aria-expanded', 'false');
+        btn.setAttribute('aria-label', 'Ouvrir le menu');
       });
     }
+    /* Évite de conserver un état mobile incohérent après rotation ou agrandissement. */
+    window.addEventListener('resize', function(){
+      if (window.matchMedia('(min-width: 720px)').matches && nav.classList.contains('ouvert')) {
+        nav.classList.remove('ouvert');
+        btn.setAttribute('aria-expanded', 'false');
+        btn.setAttribute('aria-label', 'Ouvrir le menu');
+      }
+    });
   }
 
   /* Bouton « Copier l’adresse » (créé seulement si l’API existe) */
